@@ -1,5 +1,5 @@
 import React from "react";
-import { getAllPosts, getPostBySlug } from "src/lib/api";
+import { getAllPosts, getPost } from "src/lib/post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
@@ -44,7 +44,7 @@ type Params = {
 
 
 export async function getStaticProps({ params }: Params) {
-  const post = getPostBySlug(params.slug, ["title", "slug", "content"]);
+  const post = getPost(params.slug);
 
   return {
     props: {
@@ -56,7 +56,7 @@ export async function getStaticProps({ params }: Params) {
 }
 
 export async function getStaticPaths() {
-  const posts = getAllPosts(["slug"]);
+  const posts = getAllPosts();
 
   return {
     paths: posts.map((post) => {

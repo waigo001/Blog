@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
-import { getAllPosts } from "src/lib/api";
+import { getAllPosts } from "src/lib/post";
 
 type Props = {
   allPosts: Post[];
@@ -28,7 +28,7 @@ const BlogPage: React.VFC<Props> = ({ allPosts }) => {
 export default BlogPage;
 
 export const getStaticProps = async () => {
-  const allPosts = getAllPosts(["title", "updatedAt", "slug"]);
+  const allPosts = getAllPosts();
 
   return {
     props: { allPosts },
