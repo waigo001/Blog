@@ -17,6 +17,7 @@ export const getPost = (slug: string): Post => {
     title: data.title,
     slug: slug,
     isDraft: data.isDraft,
+    description: data.description || null,
     content: content,
     updatedAt: data.updatedAt,
     createdAt: data.createdAt,

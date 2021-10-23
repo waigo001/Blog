@@ -1,3 +1,4 @@
+import { NextPage } from "next";
 import Head from "next/head";
 import Link from "next/link";
 import React from "react";
@@ -7,7 +8,7 @@ type Props = {
   allPosts: Post[];
 };
 
-const BlogPage: React.VFC<Props> = ({ allPosts }) => {
+const BlogPage: NextPage<Props> = ({ allPosts }) => {
   return (
     <div>
       <Head>

@@ -1,6 +1,4 @@
-type Post = {
-  slug: string;
-
+type AboutPage = {
   title: string;
   isDraft: boolean;
   updatedAt: string;

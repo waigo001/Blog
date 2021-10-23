@@ -6,6 +6,7 @@ import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
+import { NextPage } from "next";
 
 type Props = {
   post: Post;
@@ -13,7 +14,7 @@ type Props = {
   preview?: boolean;
 };
 
-const BlogPostPage: React.VFC<Props> = ({ post }: Props) => {
+const BlogPostPage: NextPage<Props> = ({ post }) => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
