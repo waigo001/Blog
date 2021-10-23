@@ -11,6 +11,13 @@ const nextConfig = {
   env: {
     VERSION: require("./package.json").version,
   },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.md$/,
+      type: "asset/source",
+    });
+    return config;
+  },
 };
 
 module.exports = nextConfig;
