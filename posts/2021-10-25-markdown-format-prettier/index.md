@@ -1,5 +1,6 @@
 ---
 title: Prettierでmarkdownをフォーマットしたら、半角スペースがうざかった話
+description: "Prettierでフォーマットしたmarkdownにスペースが入って見栄えが良くなかったので、プラグインで改善することにした。"
 createdAt: "2021-10-25"
 updatedAt: "2021-10-25"
 isDraft: true
@@ -47,4 +48,5 @@ $ npm i -D prettier --save-exact
 
 ## 参考
 
-[PrettierでMarkdownをフォーマットしたときの英語と日本語の間に入るスペースをどうにかする](https://qiita.com/kumapo0313/items/92d1597da5f3752f6584)
+[PrettierでMarkdownをフォーマットしたときの英語と日本語の間に入るスペースをどうにかする](https://qiita.com/kumapo0313/items/92d1597da5f3752f6584)  
+[prettier-plugin-md-nocjsp](https://github.com/tats-u/prettier-plugin-md-nocjsp#readme)
