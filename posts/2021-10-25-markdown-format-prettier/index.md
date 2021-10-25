@@ -2,7 +2,7 @@
 title: Prettierでmarkdownをフォーマットしたら、半角スペースがうざかった話
 description: "Prettierでフォーマットしたmarkdownにスペースが入って見栄えが良くなかったので、プラグインで改善することにした。"
 createdAt: "2021-10-25"
-updatedAt: "2021-10-25"
+updatedAt: "2021-10-26"
 isDraft: true
 ---
 
