@@ -3,18 +3,21 @@ title: Prettierでmarkdownをフォーマットしたら、半角スペースが
 description: "Prettierでフォーマットしたmarkdownにスペースが入って見栄えが良くなかったので、プラグインで改善することにした。"
 createdAt: "2021-10-25"
 updatedAt: "2021-10-26"
-isDraft: true
+isDraft: false
 ---
 
 ## 事の発端
 
 VSCodeでmarkdownをフォーマットしていると、「markdown の記事」や「第 1 章」のように、英字と日本語の間で半角スペースが入る（特に後者の数字と日本語パターンは目立ってしょうがない）
 
-VSCodeには拡張機能としてPrettierを導入していて、どうやらコイツが悪いらしいので、Prettierのプラグインで改善してみた。
+VSCodeには拡張機能としてPrettierを導入していて、どうやらコイツが悪い[^first] らしいので、Prettierのプラグインで改善してみた。
+
+[^first]: Prettierの次期バージョン(3.0)にて改善予定
 
 ## 導入
 
-VSCodeに[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)の拡張機能を導入する。  
+VSCodeに[Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)の拡張機能を導入する。
+
 ![Prettier拡張機能](prettier-extension.png)
 
 次に、[プラグインのリポジトリ](https://github.com/tats-u/prettier-plugin-md-nocjsp#readme)を参照し、インストールを実施する。

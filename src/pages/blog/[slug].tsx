@@ -42,7 +42,7 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             </Head>
             <h1>{post.title}</h1>
             <ReactMarkdown
-              components={{ img: ImgRenderer }}
+              components={{ img: ImgRenderer, p: "div" }}
               remarkPlugins={[remarkGfm]}
             >
               {post.content}
