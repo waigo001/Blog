@@ -7,6 +7,10 @@ class MyDocument extends Document {
       <Html lang="ja">
         <Head>
           <link rel="icon" href="/favicon.png" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&family=Josefin+Sans&display=optional"
+            rel="stylesheet"
+          />
         </Head>
         <body>
           <Main />

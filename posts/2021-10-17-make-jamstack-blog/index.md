@@ -183,7 +183,7 @@ type Post = {
 Next.jsでは、`public`フォルダにファイルを配置することで、そのまま公開することができる。  
 例えば、faviconを`public/favicon.png`のように配置した場合、「`サイトのURL/favicon.png`」で読み込むことができる。
 
-しかし、`posts`配下のフォルダをそれぞれ1つの記事として管理し、画像を配置したい。（例えば、`posts/2021-10-28-make-jamstack-blog/sample.jpg`のパスのように画像を配置したい）ので、markdown→HTMLへの変換時に画像への相対パスを確認し`require`にてダイナミックに読み込ませるようにした。
+しかし、Gatsbyと同じように`posts`配下のフォルダをそれぞれ1つの記事として管理し、画像を配置したい。（例えば、`posts/2021-10-28-make-jamstack-blog/sample.jpg`のパスのように画像を配置したい）ので、markdown→HTMLへの変換時に画像への相対パスを確認し`require`にてダイナミックに読み込ませるようにした。
 
 ```tsx
 import Image from "next/image";
