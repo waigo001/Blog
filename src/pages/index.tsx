@@ -1,24 +1,14 @@
-import React from "react";
 import Head from "next/head";
-import Link from "next/link";
+import React from "react";
+import HomeLayout from "src/components/layout/home";
 
 const HomePage: React.VFC = () => {
   return (
-    <div>
+    <HomeLayout>
       <Head>
         <title>K.W. info</title>
       </Head>
-      <main>
-        <h1>K.W. info</h1>
-        <Link href="/about">
-          <a>About</a>
-        </Link>
-        <Link href="/blog">
-          <a>Blog</a>
-        </Link>
-      </main>
-      <footer> Copyright © 2021 K.W. info All rights reserved.</footer>
-    </div>
+    </HomeLayout>
   );
 };
 
