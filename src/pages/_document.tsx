@@ -8,7 +8,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.png" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&family=Josefin+Sans&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
             rel="stylesheet"
           />
         </Head>
