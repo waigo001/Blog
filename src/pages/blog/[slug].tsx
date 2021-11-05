@@ -7,6 +7,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import Image from "next/image";
 import { NextPage } from "next";
+import BlogLayout from "src/components/layout/blog";
+import { Container } from "@mui/material";
 
 type Props = {
   post: Post;
@@ -31,12 +33,12 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
   };
 
   return (
-    <div>
-      {router.isFallback ? (
-        <h1>Loading…</h1>
-      ) : (
-        <>
-          <article className="mb-32">
+    <BlogLayout>
+      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
+        {router.isFallback ? (
+          <h1>Loading…</h1>
+        ) : (
+          <>
             <Head>
               <title>{post.title} | K.W.info</title>
             </Head>
@@ -47,10 +49,10 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             >
               {post.content}
             </ReactMarkdown>
-          </article>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </Container>
+    </BlogLayout>
   );
 };
 
