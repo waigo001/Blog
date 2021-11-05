@@ -1,8 +1,8 @@
-import { Container } from "@mui/material";
+import { Container, Grid } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
+import BlogCard from "src/components/blogCard";
 import BlogLayout from "src/components/layout/blog";
 import { getAllPosts } from "src/lib/post";
 
@@ -17,12 +17,18 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
         <title>Blog | K.W.info</title>
       </Head>
       <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
-        <h1>Blog Posts</h1>
-        {allPosts.map((post) => (
-          <div key={post.slug}>
-            <Link href={"/blog/" + post.slug}>{post.title}</Link>
-          </div>
-        ))}
+        <Grid container spacing={2}>
+          {allPosts.map((post) => (
+            <Grid item xs={12} sm={12} md={6} lg={4} key={post.slug}>
+              <BlogCard
+                title={post.title}
+                slug={post.slug}
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </Container>
     </BlogLayout>
   );
