@@ -1,13 +1,29 @@
-import { LocalOffer } from "@mui/icons-material";
 import {
+  Close,
+  Facebook,
+  LocalOffer,
+  Share,
+  Twitter,
+  Link as LinkIcon,
+} from "@mui/icons-material";
+
+import {
+  Box,
   Card,
   CardActions,
   CardContent,
+  Chip,
+  IconButton,
   Stack,
+  Tooltip,
   Typography,
+  Dialog,
+  DialogTitle,
+  DialogContent,
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import { useDialog } from "../hooks/useDialog";
 import PostTime from "./postTime";
 
 type Props = {
@@ -15,13 +31,22 @@ type Props = {
   slug?: string;
   createdAt?: string;
   updatedAt?: string;
+  tags?: Readonly<(string | undefined)[]>;
 };
 
-const BlogCard: React.VFC<Props> = ({ title, slug, createdAt, updatedAt }) => {
+const BlogCard: React.VFC<Props> = ({
+  title,
+  slug,
+  createdAt,
+  updatedAt,
+  tags,
+}) => {
+  const { isOpen, onClose, onOpen } = useDialog(false);
+
   return (
-    <Card sx={{ height: "100%" }}>
-      <CardContent>
-        <Stack spacing={1}>
+    <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
+      <CardContent sx={{ flexGrow: 1, pb: 0 }}>
+        <Stack spacing={1.25}>
           {createdAt && (
             <PostTime createdAt={createdAt} updatedAt={updatedAt} />
           )}
@@ -33,17 +58,84 @@ const BlogCard: React.VFC<Props> = ({ title, slug, createdAt, updatedAt }) => {
                 fontWeight: 600,
                 color: "text.primary",
               }}
+              component="a"
             >
               {title}
             </Typography>
           </Link>
-          <Stack direction="row" alignItems="center" spacing={1}>
-            <LocalOffer fontSize="small" />
-            <Typography>タグ</Typography>
-          </Stack>
+          <Box display="flex" alignItems="center" fontSize="small">
+            <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
+            タグ
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexWrap: "wrap",
+              listStyle: "none",
+              m: 0.5,
+              p: 0,
+            }}
+            component="ul"
+          >
+            {tags &&
+              tags.map((tag) => (
+                <Box component="li" key={tag} m={0.25}>
+                  <Chip
+                    label={tag}
+                    size="small"
+                    sx={{ px: 0.25, fontWeight: 500, color: "text.secondary" }}
+                    variant="outlined"
+                  />
+                </Box>
+              ))}
+          </Box>
         </Stack>
       </CardContent>
-      <CardActions></CardActions>
+      <CardActions>
+        <Tooltip placement="top" title="Share with">
+          <IconButton sx={{ ml: "auto" }} onClick={onOpen}>
+            <Share />
+          </IconButton>
+        </Tooltip>
+      </CardActions>
+      <Dialog open={isOpen} onClose={onClose} fullWidth>
+        <DialogTitle
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            fontWeight: 700,
+            px: 2,
+          }}
+        >
+          <Box flexGrow={1}>{title}</Box>
+          <IconButton aria-label="close" onClick={onClose}>
+            <Close />
+          </IconButton>
+        </DialogTitle>
+        <DialogContent dividers>
+          <Stack spacing={2} alignItems="center">
+            <Typography>この記事の共有方法</Typography>
+            <Stack direction="row" spacing={6} alignItems="center">
+              <Tooltip placement="top" title="Copy Link">
+                <IconButton size="large">
+                  <LinkIcon />
+                </IconButton>
+              </Tooltip>
+              <Tooltip placement="top" title="Share on Twitter">
+                <IconButton size="large">
+                  <Twitter />
+                </IconButton>
+              </Tooltip>
+              <Tooltip placement="top" title="Share on Facebook">
+                <IconButton size="large">
+                  <Facebook />
+                </IconButton>
+              </Tooltip>
+            </Stack>
+          </Stack>
+        </DialogContent>
+      </Dialog>
     </Card>
   );
 };

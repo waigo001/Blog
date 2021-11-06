@@ -3,6 +3,9 @@ title: Next.jsでJamstackなブログを作ってみた
 createdAt: "2021-10-17"
 updatedAt: "2021-10-17"
 isDraft: true
+tags:
+  - Jamstack
+  - Next.js
 ---
 
 ## そもそも理論（またですか）

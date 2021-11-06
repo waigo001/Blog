@@ -3,6 +3,11 @@ title: Next.jsでJamstackなブログを作ってみた 2.スタイル変更編
 createdAt: "2021-10-30"
 updatedAt: "2021-10-30"
 isDraft: true
+tags:
+  - Next.js
+  - Jamstack
+  - markdown
+  - MUI
 ---
 
 ## 概要

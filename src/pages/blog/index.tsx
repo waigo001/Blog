@@ -25,6 +25,7 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
                 slug={post.slug}
                 createdAt={post.createdAt}
                 updatedAt={post.updatedAt}
+                tags={post.tags}
               />
             </Grid>
           ))}

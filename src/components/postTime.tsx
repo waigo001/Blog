@@ -1,5 +1,5 @@
 import { Update, WatchLater } from "@mui/icons-material";
-import { Stack, Box, Theme } from "@mui/material";
+import { Stack, Box, Theme, Typography } from "@mui/material";
 import { SxProps } from "@mui/system";
 import { format, isAfter, parseISO } from "date-fns";
 import React from "react";
@@ -23,35 +23,32 @@ const PostTime: React.VFC<Props> = ({
 
   return (
     <Box sx={sx}>
-      <Stack
-        direction="row"
+      <Box
         alignItems="center"
-        spacing={1}
         display={isUpdated ? "flex" : "none"}
+        fontSize="small"
       >
-        <Update fontSize="small" />
+        <Update sx={{ fontSize: "1rem", mr: 0.5 }} />
         <time
           dateTime={updatedAt}
           itemProp={enableItemProp ? "datemodified" : undefined}
         >
           {format(updatedTime, "yyyy/MM/dd")}
         </time>
-      </Stack>
-      <Stack
-        direction="row"
+      </Box>
+      <Box
         alignItems="center"
-        spacing={1}
         display={!isUpdated ? "flex" : "none"}
-        fontSize="1rem"
+        fontSize="small"
       >
-        <WatchLater fontSize="small" />
+        <WatchLater sx={{ fontSize: "1rem", mr: 0.5 }} />
         <time
           dateTime={createdAt}
           itemProp={enableItemProp ? "datepublished" : undefined}
         >
           {format(createdTime, "yyyy/MM/dd")}
         </time>
-      </Stack>
+      </Box>
     </Box>
   );
 };

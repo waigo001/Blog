@@ -4,6 +4,9 @@ description: "Prettierでフォーマットしたmarkdownにスペースが入�
 createdAt: "2021-10-25"
 updatedAt: "2021-10-26"
 isDraft: false
+tags:
+  - Prettier
+  - markdown
 ---
 
 ## 事の発端
