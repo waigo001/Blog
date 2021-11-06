@@ -19,8 +19,9 @@ const SocialLink: React.VFC<Props> = ({
       target="_blank"
       rel="noopener"
       size="large"
-      children={icon}
-    />
+    >
+      {icon}
+    </IconButton>
   );
 };
 

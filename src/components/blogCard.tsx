@@ -24,7 +24,7 @@ import {
 import Link from "next/link";
 import React from "react";
 import { useDialog } from "../hooks/useDialog";
-import PostTime from "./postTime";
+import PostTime from "./PostTime";
 
 type Props = {
   title?: string;

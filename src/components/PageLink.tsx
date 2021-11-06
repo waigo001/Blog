@@ -26,9 +26,10 @@ const PageLink: React.VFC<Props> = ({ children, icon, to, sx, onClick }) => {
         variant="text"
         size="large"
         startIcon={icon}
-        children={children}
         onClick={onClick}
-      />
+      >
+        {children}
+      </Button>
     </Link>
   );
 };
