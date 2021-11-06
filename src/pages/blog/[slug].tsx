@@ -5,10 +5,14 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import Image from "next/image";
+import remarkUnwrapImages from "remark-unwrap-images";
+
 import { NextPage } from "next";
+import Image from "next/image";
+
 import BlogLayout from "src/components/layout/blog";
 import { Container } from "@mui/material";
+import PostRenderer from "src/components/PostRenderer";
 
 type Props = {
   post: Post;
@@ -26,7 +30,6 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     const { alt, src } = props;
 
     if (!src) return <></>;
-    if (isURL(src)) return <img src={src} alt={alt} />;
 
     const imgSrc = isURL(src) ? src : require(`posts/${post.slug}/${src}`);
     return <Image src={imgSrc} alt={alt} />;
@@ -44,8 +47,8 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             </Head>
             <h1>{post.title}</h1>
             <ReactMarkdown
-              components={{ img: ImgRenderer, p: "div" }}
-              remarkPlugins={[remarkGfm]}
+              components={{ img: ImgRenderer, ...PostRenderer }}
+              remarkPlugins={[remarkUnwrapImages, remarkGfm]}
             >
               {post.content}
             </ReactMarkdown>
