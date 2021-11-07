@@ -48,7 +48,12 @@ const CodeBlock: React.VFC<Props> = ({
   const [language, title] = getParams(className);
   const [editorCode] = useState(String(children).trim());
   const theme = lightTheme;
-  if (inline) return <code className={className} {...props}></code>;
+  if (inline)
+    return (
+      <code className={className} {...props}>
+        {children}
+      </code>
+    );
 
   const highlightColor = theme.plain.color + "22";
   const shouldHighlightLine = calculateLinesToHighlight(metastring);
