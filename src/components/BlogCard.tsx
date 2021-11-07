@@ -20,10 +20,15 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
+  Divider,
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import remarkUnwrapImages from "remark-unwrap-images";
 import { useDialog } from "../hooks/useDialog";
+import PostRenderer from "./PostRenderer";
 import PostTime from "./PostTime";
 
 type Props = {
@@ -32,6 +37,7 @@ type Props = {
   createdAt?: string;
   updatedAt?: string;
   tags?: Readonly<(string | undefined)[]>;
+  content?: string;
 };
 
 const BlogCard: React.VFC<Props> = ({
@@ -40,6 +46,7 @@ const BlogCard: React.VFC<Props> = ({
   createdAt,
   updatedAt,
   tags,
+  content,
 }) => {
   const { isOpen, onClose, onOpen } = useDialog(false);
 
@@ -89,6 +96,17 @@ const BlogCard: React.VFC<Props> = ({
                 </Box>
               ))}
           </Box>
+          {content && (
+            <>
+              <Divider />
+              <ReactMarkdown
+                components={{ ...PostRenderer }}
+                remarkPlugins={[remarkUnwrapImages, remarkGfm]}
+              >
+                {content}
+              </ReactMarkdown>
+            </>
+          )}
         </Stack>
       </CardContent>
       <CardActions>
