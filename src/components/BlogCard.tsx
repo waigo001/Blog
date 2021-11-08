@@ -20,44 +20,28 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  Divider,
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import remarkUnwrapImages from "remark-unwrap-images";
 import { useDialog } from "../hooks/useDialog";
 import PostRenderer from "./PostRenderer";
 import PostTime from "./PostTime";
 
 type Props = {
-  title?: string;
-  slug?: string;
-  createdAt?: string;
-  updatedAt?: string;
-  tags?: Readonly<(string | undefined)[]>;
-  content?: string;
+  post: Post;
 };
 
-const BlogCard: React.VFC<Props> = ({
-  title,
-  slug,
-  createdAt,
-  updatedAt,
-  tags,
-  content,
-}) => {
+const BlogCard: React.VFC<Props> = ({ post }) => {
   const { isOpen, onClose, onOpen } = useDialog(false);
 
   return (
     <Card sx={{ height: "100%", display: "flex", flexDirection: "column" }}>
       <CardContent sx={{ flexGrow: 1, pb: 0 }}>
         <Stack spacing={1.25}>
-          {createdAt && (
-            <PostTime createdAt={createdAt} updatedAt={updatedAt} />
+          {post.createdAt && (
+            <PostTime createdAt={post.createdAt} updatedAt={post.updatedAt} />
           )}
-          <Link href={`/blog/${slug}`} passHref>
+          <Link href={`/blog/${post.slug}`} passHref>
             <Typography
               sx={{
                 textDecoration: "none",
@@ -67,7 +51,7 @@ const BlogCard: React.VFC<Props> = ({
               }}
               component="a"
             >
-              {title}
+              {post.title}
             </Typography>
           </Link>
           <Box display="flex" alignItems="center" fontSize="small">
@@ -84,8 +68,8 @@ const BlogCard: React.VFC<Props> = ({
             }}
             component="ul"
           >
-            {tags &&
-              tags.map((tag) => (
+            {post.tags &&
+              post.tags.map((tag) => (
                 <Box component="li" key={tag} m={0.25}>
                   <Chip
                     label={tag}
@@ -96,17 +80,6 @@ const BlogCard: React.VFC<Props> = ({
                 </Box>
               ))}
           </Box>
-          {content && (
-            <>
-              <Divider />
-              <ReactMarkdown
-                components={{ ...PostRenderer }}
-                remarkPlugins={[remarkUnwrapImages, remarkGfm]}
-              >
-                {content}
-              </ReactMarkdown>
-            </>
-          )}
         </Stack>
       </CardContent>
       <CardActions>
@@ -126,7 +99,7 @@ const BlogCard: React.VFC<Props> = ({
             px: 2,
           }}
         >
-          <Box flexGrow={1}>{title}</Box>
+          <Box flexGrow={1}>{post.title}</Box>
           <IconButton aria-label="close" onClick={onClose}>
             <Close />
           </IconButton>

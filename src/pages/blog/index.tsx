@@ -20,13 +20,7 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
         <Grid container spacing={2}>
           {allPosts.map((post) => (
             <Grid item xs={12} sm={12} md={6} lg={4} key={post.slug}>
-              <BlogCard
-                title={post.title}
-                slug={post.slug}
-                createdAt={post.createdAt}
-                updatedAt={post.updatedAt}
-                tags={post.tags}
-              />
+              <BlogCard post={post} />
             </Grid>
           ))}
         </Grid>

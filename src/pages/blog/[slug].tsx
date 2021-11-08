@@ -5,11 +5,10 @@ import ErrorPage from "next/error";
 import Head from "next/head";
 
 import { NextPage } from "next";
-import Image from "next/image";
 
 import BlogLayout from "src/components/layout/blog";
 import { Container } from "@mui/material";
-import BlogCard from "src/components/BlogCard";
+import PostRenderer from "src/components/PostRenderer";
 
 type Props = {
   post: Post;
@@ -23,15 +22,6 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
-    const { alt, src } = props;
-
-    if (!src) return <></>;
-
-    const imgSrc = isURL(src) ? src : require(`posts/${post.slug}/${src}`);
-    return <Image src={imgSrc} alt={alt} />;
-  };
-
   return (
     <BlogLayout>
       <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
@@ -42,14 +32,7 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             <Head>
               <title>{post.title} | K.W.info</title>
             </Head>
-            <BlogCard
-              title={post.title}
-              slug={post.slug}
-              createdAt={post.createdAt}
-              updatedAt={post.updatedAt}
-              tags={post.tags}
-              content={post.content}
-            />
+            <PostRenderer post={post} />
           </>
         )}
       </Container>
@@ -91,12 +74,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
-const isURL = (url: string) => {
-  try {
-    new URL(url);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};
