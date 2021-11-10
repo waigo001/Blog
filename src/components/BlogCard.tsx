@@ -5,7 +5,6 @@ import {
   Card,
   CardActions,
   CardContent,
-  Chip,
   IconButton,
   Stack,
   Tooltip,
@@ -13,9 +12,10 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import { useDialog } from "../hooks/useDialog";
+import { useDialog } from "src/hooks/useDialog";
 import PostTime from "./PostTime";
 import ShareDialog from "./ShareDialog";
+import Tags from "./Tags";
 
 type Props = {
   post: Post;
@@ -48,32 +48,11 @@ const BlogCard: React.VFC<Props> = ({ post }) => {
             <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
             タグ
           </Box>
-          <Box
-            sx={{
-              display: "flex",
-              flexWrap: "wrap",
-              listStyle: "none",
-              m: 0.5,
-              p: 0,
-            }}
-            component="ul"
-          >
-            {post.tags &&
-              post.tags.map((tag) => (
-                <Box component="li" key={tag} m={0.25}>
-                  <Chip
-                    label={tag}
-                    size="small"
-                    sx={{ px: 0.25, fontWeight: 500, color: "text.secondary" }}
-                    variant="outlined"
-                  />
-                </Box>
-              ))}
-          </Box>
+          <Tags tags={post.tags} />
         </Stack>
       </CardContent>
       <CardActions>
-        <Tooltip placement="top" title="Share with">
+        <Tooltip placement="top" title="共有">
           <IconButton sx={{ ml: "auto" }} onClick={onOpen}>
             <Share />
           </IconButton>

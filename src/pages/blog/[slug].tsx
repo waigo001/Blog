@@ -7,8 +7,17 @@ import Head from "next/head";
 import { NextPage } from "next";
 
 import BlogLayout from "src/components/layout/blog";
-import { Container } from "@mui/material";
+import {
+  Box,
+  Container,
+  Divider,
+  Stack,
+  Typography,
+} from "@mui/material";
 import PostRenderer from "src/components/PostRenderer";
+import PostTime from "src/components/PostTime";
+import { LocalOffer } from "@mui/icons-material";
+import Tags from "src/components/Tags";
 
 type Props = {
   post: Post;
@@ -32,7 +41,32 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             <Head>
               <title>{post.title} | K.W.info</title>
             </Head>
-            <PostRenderer post={post} />
+            <Stack spacing={1.25}>
+              <PostTime
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+                enableItemProp
+              />
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  fontSize: "1.25rem",
+                  fontWeight: 600,
+                }}
+                component="h1"
+              >
+                {post.title}
+              </Typography>
+              <Box display="flex" alignItems="center" fontSize="small">
+                <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
+                タグ
+              </Box>
+              <Tags tags={post.tags} />
+              <Divider sx={{ pt: 2 }} />
+              <div>
+                <PostRenderer post={post} />
+              </div>
+            </Stack>
           </>
         )}
       </Container>
