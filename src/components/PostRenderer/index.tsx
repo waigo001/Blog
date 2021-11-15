@@ -1,4 +1,4 @@
-import { Divider, Typography } from "@mui/material";
+import { Divider, Link, Typography } from "@mui/material";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { SpecialComponents } from "react-markdown/lib/ast-to-react";
@@ -27,7 +27,7 @@ const Components: Partial<
   h2: ({ children }) => (
     <Typography
       component="h2"
-      mt="3rem"
+      mt="2.5rem"
       mb="0.5rem"
       lineHeight={1.3}
       fontWeight={700}
@@ -93,6 +93,11 @@ const Components: Partial<
     </Typography>
   ),
   hr: () => <Divider sx={{ my: 1 }} />,
+  a: ({ children, href }) => (
+    <Link href={href} target="_blank" rel="noopener">
+      {children}
+    </Link>
+  ),
   code: CodeBlock,
 };
 
@@ -105,8 +110,9 @@ const PostRenderer: React.VFC<Props> = ({ post }) => {
     const { alt, src } = props;
 
     if (!src) return <></>;
+    if (isURL(src)) return <img src={src} alt={alt} />;
 
-    const imgSrc = isURL(src) ? src : require(`posts/${post.slug}/${src}`);
+    const imgSrc = require(`posts/${post.slug}/${src}`);
     return <Image src={imgSrc} alt={alt} />;
   };
 
