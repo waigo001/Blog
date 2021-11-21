@@ -29,9 +29,13 @@ const Components: Partial<
       component="h2"
       mt="2.5rem"
       mb="0.5rem"
-      lineHeight={1.3}
+      lineHeight={1.2}
       fontWeight={700}
       fontSize="1.5rem"
+      borderLeft={4}
+      borderColor="primary.main"
+      pl={1}
+      py={0.5}
       sx={{
         "& + h3": {
           mt: "1.5rem",

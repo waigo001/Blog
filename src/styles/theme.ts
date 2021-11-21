@@ -1,5 +1,14 @@
 import { createTheme } from "@mui/material/styles";
 
+declare module "@mui/material/styles/createTypography" {
+  interface TypographyOptions {
+    fontFamilyCode?: string;
+  }
+  interface Typography {
+    fontFamilyCode: string;
+  }
+}
+
 let theme = createTheme({
   typography: {
     button: {
@@ -18,6 +27,13 @@ let theme = createTheme({
       '"Apple Color Emoji"',
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
+    ].join(","),
+    fontFamilyCode: [
+      "Consolas",
+      "Monaco",
+      "Andale Mono",
+      "Ubuntu Mono",
+      "monospace",
     ].join(","),
   },
   palette: {

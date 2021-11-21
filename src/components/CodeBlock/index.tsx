@@ -1,16 +1,18 @@
 import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import React, { useState } from "react";
 
-import lightTheme from "prism-react-renderer/themes/github";
+import DarkTheme from "prism-react-renderer/themes/nightOwl";
 import { Box } from "@mui/system";
+import type { TypographyOptions } from "@mui/material/styles/createTypography";
+import { Element } from "hast";
+import { alpha } from "@mui/material/styles";
 
 type Props = {
   children: React.ReactNode;
   className?: string;
-  metastring?: string;
   inline?: boolean;
+  node?: Element;
 };
-
 const RE = /{([\d,-]+)}/;
 
 const calculateLinesToHighlight = (meta = "") => {
@@ -41,27 +43,56 @@ const getParams = (className = "") => {
 const CodeBlock: React.VFC<Props> = ({
   children,
   className,
-  metastring,
   inline,
+  node,
   ...props
 }) => {
   const [language, title] = getParams(className);
   const [editorCode] = useState(String(children).trim());
-  const theme = lightTheme;
+  const prismTheme = DarkTheme;
+
   if (inline)
     return (
-      <code className={className} {...props}>
+      <Box
+        component="code"
+        className={className}
+        {...props}
+        px={0.75}
+        py={0.25}
+        mx={0.25}
+        fontFamily={(theme) =>
+          (theme.typography as TypographyOptions).fontFamilyCode
+        }
+        color="text.primary"
+        bgcolor={(theme) => alpha(theme.palette.primary.light, 0.2)}
+        borderRadius={1.5}
+      >
         {children}
-      </code>
+      </Box>
     );
 
-  const highlightColor = theme.plain.color + "22";
-  const shouldHighlightLine = calculateLinesToHighlight(metastring);
+  const highlightColor = prismTheme.plain.color + "22";
+  const shouldHighlightLine = calculateLinesToHighlight(
+    node?.data?.meta as string
+  );
 
   return (
-    <div>
+    <>
       {title && (
-        <Box py={0.5} px={3} display="inline-block">
+        <Box
+          py={0.5}
+          px={2}
+          display="inline-block"
+          position="relative"
+          top="1rem"
+          left="1rem"
+          bgcolor={prismTheme.plain.color}
+          color={prismTheme.plain.backgroundColor}
+          fontFamily={(theme) =>
+            (theme.typography as TypographyOptions).fontFamilyCode
+          }
+          borderRadius={2}
+        >
           {title}
         </Box>
       )}
@@ -69,7 +100,7 @@ const CodeBlock: React.VFC<Props> = ({
         {...defaultProps}
         code={editorCode}
         language={language as Language}
-        theme={theme}
+        theme={prismTheme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box
@@ -77,31 +108,37 @@ const CodeBlock: React.VFC<Props> = ({
             className={className}
             style={style}
             data-language={language}
+            m={0}
             sx={{
               overflowX: "auto",
+              borderRadius: 2,
             }}
           >
             <Box
               component="code"
               className={className}
-              py={4}
-              sx={{ float: "left", minWidth: "full" }}
+              py={3}
+              sx={{ float: "left", minWidth: "100%" }}
             >
               {tokens.map((line, i) => (
                 <Box
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  px={4}
+                  px={3}
                   sx={{
                     bgcolor: shouldHighlightLine(i)
                       ? highlightColor
                       : undefined,
+                    fontFamily: (theme) =>
+                      (theme.typography as TypographyOptions).fontFamilyCode,
                   }}
                 >
                   {line.map((token, key) => (
                     <Box
                       component="span"
-                      sx={{ wordWrap: "normal" }}
+                      sx={{
+                        wordWrap: "normal",
+                      }}
                       key={key}
                       {...getTokenProps({ token, key })}
                     />
@@ -112,7 +149,7 @@ const CodeBlock: React.VFC<Props> = ({
           </Box>
         )}
       </Highlight>
-    </div>
+    </>
   );
 };
 
