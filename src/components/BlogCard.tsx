@@ -36,7 +36,7 @@ const BlogCard: React.VFC<Props> = ({ post }) => {
               sx={{
                 textDecoration: "none",
                 fontSize: "1.25rem",
-                fontWeight: 600,
+                fontWeight: 700,
                 color: "text.primary",
               }}
               component="a"
@@ -52,7 +52,7 @@ const BlogCard: React.VFC<Props> = ({ post }) => {
         </Stack>
       </CardContent>
       <CardActions>
-        <Tooltip placement="top" title="共有">
+        <Tooltip placement="top" title="Share">
           <IconButton sx={{ ml: "auto" }} onClick={onOpen}>
             <Share />
           </IconButton>
