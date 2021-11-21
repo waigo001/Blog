@@ -107,7 +107,7 @@ export default theme;
 今回は「Noto Sans JP」・「Roboto」・「Josefin Sans」をGoogle Fontsを経由して利用する。  
 `_document.tsx`に以下追記する。
 
-```tsx:_document.tsx
+```tsx:_document.tsx {10-13}
 import Document, { Head, Html, Main, NextScript } from "next/document";
 import React from "react";
 
@@ -118,7 +118,7 @@ class MyDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.png" />
           <link
-            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&family=Josefin+Sans&display=optional"
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&family=Noto+Sans+JP:wght@300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
             rel="stylesheet"
           />
         </Head>
@@ -135,16 +135,9 @@ export default MyDocument;
 
 ```
 
-重要なのは以下の部分
-
-```html
-<link
-  href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&family=Roboto&family=Josefin+Sans&display=optional"
-  rel="stylesheet"
-/>;
-```
+重要なのはハイライトの部分
 
 - `family=`で使用したいフォント名を列挙する。
-- `display=`は`optional`に設定する。（Next.jsの[ここ](https://nextjs.org/docs/messages/google-font-display)を参照）
+- font-weightも併せて指定する
 
 上記のように設定することで、Next.jsでビルド時に自動的に最適化が行われる。
