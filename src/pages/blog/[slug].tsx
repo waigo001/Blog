@@ -7,13 +7,7 @@ import Head from "next/head";
 import { NextPage } from "next";
 
 import BlogLayout from "src/components/layout/blog";
-import {
-  Box,
-  Container,
-  Divider,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import PostRenderer from "src/components/PostRenderer";
 import PostTime from "src/components/PostTime";
 import { LocalOffer } from "@mui/icons-material";
@@ -50,8 +44,9 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
               <Typography
                 sx={{
                   textDecoration: "none",
-                  fontSize: "1.25rem",
-                  fontWeight: 600,
+                  fontSize: "1.875rem",
+                  letterSpacing: "-0.025rem",
+                  fontWeight: 700,
                 }}
                 component="h1"
               >
