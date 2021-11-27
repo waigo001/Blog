@@ -7,6 +7,7 @@ import remarkGfm from "remark-gfm";
 import remarkUnwrapImages from "remark-unwrap-images";
 import CodeBlock from "../CodeBlock";
 import Image from "next/image";
+import { alpha, Box } from "@mui/system";
 
 const Components: Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
@@ -72,11 +73,14 @@ const Components: Partial<
     <Typography
       component="p"
       mt="1.25rem"
-      mb={1}
+      mb="0.5rem"
       lineHeight={1.7}
       sx={{
         "blockquote &": {
-          mt: 0,
+          my: 1,
+        },
+        "li &": {
+          my: 0,
         },
       }}
     >
@@ -84,24 +88,30 @@ const Components: Partial<
     </Typography>
   ),
   blockquote: ({ children }) => (
-    <Typography
+    <Box
       component="blockquote"
-      py={1}
-      pl={1.5}
-      color="text.secondary"
-      sx={{
-        borderLeft: "0.25rem solid",
-      }}
+      p={1}
+      mx={0.5}
+      my={2}
+      bgcolor={(theme) => alpha(theme.palette.secondary.main, 0.1)}
+      borderLeft={4}
+      borderRadius={1}
+      borderColor="secondary.main"
     >
       {children}
-    </Typography>
+    </Box>
   ),
   hr: () => <Divider sx={{ my: 1 }} />,
-  a: ({ children, href }) => (
-    <Link href={href} target="_blank" rel="noopener">
-      {children}
-    </Link>
-  ),
+  a: ({ children, href, id }) =>
+    isURL(href) ? (
+      <Link href={href} target="_blank" rel="noopener" id={id}>
+        {children}
+      </Link>
+    ) : (
+      <Link href={href} underline="hover" id={id}>
+        {children}
+      </Link>
+    ),
   code: CodeBlock,
 };
 
@@ -114,6 +124,7 @@ const PostRenderer: React.VFC<Props> = ({ post }) => {
     const { alt, src } = props;
 
     if (!src) return <></>;
+    // eslint-disable-next-line @next/next/no-img-element
     if (isURL(src)) return <img src={src} alt={alt} />;
 
     const imgSrc = require(`posts/${post.slug}/${src}`);
@@ -132,7 +143,8 @@ const PostRenderer: React.VFC<Props> = ({ post }) => {
 
 export default PostRenderer;
 
-const isURL = (url: string) => {
+const isURL = (url?: string) => {
+  if (!url) return false;
   try {
     new URL(url);
   } catch (e) {
