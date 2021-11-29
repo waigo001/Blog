@@ -1,7 +1,9 @@
+import { Container, Grid } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
 import React from "react";
+import BlogCard from "src/components/BlogCard";
+import BlogLayout from "src/components/layout/blog";
 import { getAllPosts } from "src/lib/post";
 
 type Props = {
@@ -10,19 +12,20 @@ type Props = {
 
 const BlogPage: NextPage<Props> = ({ allPosts }) => {
   return (
-    <div>
+    <BlogLayout>
       <Head>
         <title>Blog | K.W.info</title>
       </Head>
-      <main>
-        <h1>Blog Posts</h1>
-        {allPosts.map((post) => (
-          <div key={post.slug}>
-            <Link href={"/blog/" + post.slug}>{post.title}</Link>
-          </div>
-        ))}
-      </main>
-    </div>
+      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
+        <Grid container spacing={2}>
+          {allPosts.map((post) => (
+            <Grid item xs={12} sm={12} md={6} lg={4} key={post.slug}>
+              <BlogCard post={post} />
+            </Grid>
+          ))}
+        </Grid>
+      </Container>
+    </BlogLayout>
   );
 };
 

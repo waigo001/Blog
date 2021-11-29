@@ -3,10 +3,15 @@ import { getAllPosts, getPost } from "src/lib/post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
 import Head from "next/head";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import Image from "next/image";
+
 import { NextPage } from "next";
+
+import BlogLayout from "src/components/layout/blog";
+import { Box, Container, Divider, Stack, Typography } from "@mui/material";
+import PostRenderer from "src/components/PostRenderer";
+import PostTime from "src/components/PostTime";
+import { LocalOffer } from "@mui/icons-material";
+import Tags from "src/components/Tags";
 
 type Props = {
   post: Post;
@@ -20,37 +25,47 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
-    const { alt, src } = props;
-
-    if (!src) return <></>;
-    if (isURL(src)) return <img src={src} alt={alt} />;
-
-    const imgSrc = isURL(src) ? src : require(`posts/${post.slug}/${src}`);
-    return <Image src={imgSrc} alt={alt} />;
-  };
-
   return (
-    <div>
-      {router.isFallback ? (
-        <h1>Loading…</h1>
-      ) : (
-        <>
-          <article className="mb-32">
+    <BlogLayout>
+      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
+        {router.isFallback ? (
+          <h1>Loading…</h1>
+        ) : (
+          <>
             <Head>
               <title>{post.title} | K.W.info</title>
             </Head>
-            <h1>{post.title}</h1>
-            <ReactMarkdown
-              components={{ img: ImgRenderer, p: "div" }}
-              remarkPlugins={[remarkGfm]}
-            >
-              {post.content}
-            </ReactMarkdown>
-          </article>
-        </>
-      )}
-    </div>
+            <Stack spacing={1.25}>
+              <PostTime
+                createdAt={post.createdAt}
+                updatedAt={post.updatedAt}
+                enableItemProp
+              />
+              <Typography
+                sx={{
+                  textDecoration: "none",
+                  fontSize: "1.875rem",
+                  letterSpacing: "-0.025rem",
+                  fontWeight: 700,
+                }}
+                component="h1"
+              >
+                {post.title}
+              </Typography>
+              <Box display="flex" alignItems="center" fontSize="small">
+                <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
+                タグ
+              </Box>
+              <Tags tags={post.tags} />
+              <Divider sx={{ pt: 2 }} />
+              <div>
+                <PostRenderer post={post} />
+              </div>
+            </Stack>
+          </>
+        )}
+      </Container>
+    </BlogLayout>
   );
 };
 
@@ -88,12 +103,3 @@ export async function getStaticPaths() {
     fallback: false,
   };
 }
-
-const isURL = (url: string) => {
-  try {
-    new URL(url);
-  } catch (e) {
-    return false;
-  }
-  return true;
-};

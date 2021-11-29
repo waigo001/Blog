@@ -8,4 +8,5 @@ type Post = {
   description?: string;
 
   content: string;
+  tags?: string[];
 };
