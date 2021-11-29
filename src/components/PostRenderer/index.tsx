@@ -1,4 +1,14 @@
-import { Divider, Link, Typography } from "@mui/material";
+import {
+  Divider,
+  Link,
+  Typography,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  TableContainer,
+} from "@mui/material";
 import React from "react";
 import ReactMarkdown from "react-markdown";
 import { SpecialComponents } from "react-markdown/lib/ast-to-react";
@@ -113,6 +123,38 @@ const Components: Partial<
       </Link>
     ),
   code: CodeBlock,
+  table: ({ children }) => (
+    <TableContainer>
+      <Table size="small">{children}</Table>
+    </TableContainer>
+  ),
+  thead: ({ children }) => <TableHead>{children}</TableHead>,
+  tbody: ({ children }) => <TableBody>{children}</TableBody>,
+  tr: ({ children }) => <TableRow>{children}</TableRow>,
+  th: ({ children, style }) => {
+    let align;
+    if (
+      style?.textAlign === "left" ||
+      style?.textAlign === "center" ||
+      style?.textAlign === "right" ||
+      style?.textAlign === "justify" ||
+      style?.textAlign === "inherit"
+    )
+      align = style?.textAlign;
+    return <TableCell align={align}>{children}</TableCell>;
+  },
+  td: ({ children, style }) => {
+    let align;
+    if (
+      style?.textAlign === "left" ||
+      style?.textAlign === "center" ||
+      style?.textAlign === "right" ||
+      style?.textAlign === "justify" ||
+      style?.textAlign === "inherit"
+    )
+      align = style?.textAlign;
+    return <TableCell align={align}>{children}</TableCell>;
+  },
 };
 
 type Props = {
