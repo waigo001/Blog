@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import BlogCard from "src/components/BlogCard";
-import CommonLayout from "src/components/layout/common";
+import { CommonLayout } from "src/components/Layout";
 import { getAllPosts } from "src/lib/post";
 
 type Props = {

@@ -6,7 +6,7 @@ import Head from "next/head";
 
 import { NextPage } from "next";
 
-import CommonLayout from "src/components/layout/common";
+import CommonLayout from "src/components/Layout/common";
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
 import { PostPageRenderer } from "src/components/MarkdownRenderer";
 import PostTime from "src/components/PostTime";
