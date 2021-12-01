@@ -6,9 +6,9 @@ import Head from "next/head";
 
 import { NextPage } from "next";
 
-import BlogLayout from "src/components/layout/blog";
+import CommonLayout from "src/components/layout/common";
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import PostRenderer from "src/components/PostRenderer";
+import { PostPageRenderer } from "src/components/MarkdownRenderer";
 import PostTime from "src/components/PostTime";
 import { LocalOffer } from "@mui/icons-material";
 import Tags from "src/components/Tags";
@@ -26,8 +26,8 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
   }
 
   return (
-    <BlogLayout>
-      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
+    <CommonLayout>
+      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }} maxWidth="md">
         {router.isFallback ? (
           <h1>Loading…</h1>
         ) : (
@@ -59,13 +59,13 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
               <Tags tags={post.tags} />
               <Divider sx={{ pt: 2 }} />
               <div>
-                <PostRenderer post={post} />
+                <PostPageRenderer post={post} />
               </div>
             </Stack>
           </>
         )}
       </Container>
-    </BlogLayout>
+    </CommonLayout>
   );
 };
 

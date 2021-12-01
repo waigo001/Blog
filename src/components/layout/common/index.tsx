@@ -18,7 +18,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const BlogLayout: React.VFC<Props> = ({ children }) => {
+const CommonLayout: React.VFC<Props> = ({ children }) => {
   const [isOpen, setDrawerState] = useState<boolean>(false);
 
   const openDrawer = () => {
@@ -114,4 +114,4 @@ const BlogLayout: React.VFC<Props> = ({ children }) => {
   );
 };
 
-export default BlogLayout;
+export default CommonLayout;

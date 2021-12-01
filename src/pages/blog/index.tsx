@@ -3,7 +3,7 @@ import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import BlogCard from "src/components/BlogCard";
-import BlogLayout from "src/components/layout/blog";
+import CommonLayout from "src/components/layout/common";
 import { getAllPosts } from "src/lib/post";
 
 type Props = {
@@ -12,7 +12,7 @@ type Props = {
 
 const BlogPage: NextPage<Props> = ({ allPosts }) => {
   return (
-    <BlogLayout>
+    <CommonLayout>
       <Head>
         <title>Blog | K.W.info</title>
       </Head>
@@ -25,7 +25,7 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
           ))}
         </Grid>
       </Container>
-    </BlogLayout>
+    </CommonLayout>
   );
 };
 

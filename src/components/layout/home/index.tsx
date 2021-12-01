@@ -1,6 +1,5 @@
 import { GitHub, Info, Instagram, Today, Twitter } from "@mui/icons-material";
 import { Stack, Typography } from "@mui/material";
-import Head from "next/head";
 import React from "react";
 import PageLink from "src/components/PageLink";
 import SocialLink from "src/components/SocialLink";
