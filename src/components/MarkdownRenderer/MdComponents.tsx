@@ -1,25 +1,23 @@
 import {
+  Typography,
+  Box,
+  alpha,
   Divider,
   Link,
-  Typography,
+  TableContainer,
   Table,
   TableHead,
   TableBody,
   TableRow,
   TableCell,
-  TableContainer,
 } from "@mui/material";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 import { SpecialComponents } from "react-markdown/lib/ast-to-react";
 import { NormalComponents } from "react-markdown/lib/complex-types";
-import remarkGfm from "remark-gfm";
-import remarkUnwrapImages from "remark-unwrap-images";
+import { isURL } from "src/utils";
 import CodeBlock from "../CodeBlock";
-import Image from "next/image";
-import { alpha, Box } from "@mui/system";
 
-const Components: Partial<
+export const MdComponents: Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
 > = {
   h1: ({ children }) => (
@@ -155,42 +153,4 @@ const Components: Partial<
       align = style?.textAlign;
     return <TableCell align={align}>{children}</TableCell>;
   },
-};
-
-type Props = {
-  post: Post;
-};
-
-const PostRenderer: React.VFC<Props> = ({ post }) => {
-  const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
-    const { alt, src } = props;
-
-    if (!src) return <></>;
-    // eslint-disable-next-line @next/next/no-img-element
-    if (isURL(src)) return <img src={src} alt={alt} />;
-
-    const imgSrc = require(`posts/${post.slug}/${src}`);
-    return <Image src={imgSrc} alt={alt} />;
-  };
-
-  return (
-    <ReactMarkdown
-      components={{ img: ImgRenderer, ...Components }}
-      remarkPlugins={[remarkUnwrapImages, remarkGfm]}
-    >
-      {post.content}
-    </ReactMarkdown>
-  );
-};
-
-export default PostRenderer;
-
-const isURL = (url?: string) => {
-  if (!url) return false;
-  try {
-    new URL(url);
-  } catch (e) {
-    return false;
-  }
-  return true;
 };
