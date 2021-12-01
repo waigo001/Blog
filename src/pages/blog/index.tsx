@@ -2,7 +2,7 @@ import { Container, Grid } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import BlogCard from "src/components/BlogCard";
+import BlogCard from "src/components/uiParts/BlogCard";
 import { CommonLayout } from "src/components/Layout";
 import { getAllPosts } from "src/lib/post";
 
