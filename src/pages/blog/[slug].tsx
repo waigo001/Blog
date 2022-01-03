@@ -6,8 +6,6 @@ import Head from "next/head";
 
 import { NextPage } from "next";
 
-import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import { LocalOffer } from "@mui/icons-material";
 import { CommonLayout } from "src/components/layout";
 import { PostTime, Tags, PostPageRenderer } from "src/components/uiParts";
 
@@ -25,44 +23,24 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
 
   return (
     <CommonLayout>
-      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }} maxWidth="md">
-        {router.isFallback ? (
-          <h1>Loading…</h1>
-        ) : (
-          <>
-            <Head>
-              <title>{post.title} | K.W.info</title>
-            </Head>
-            <Stack spacing={1.25}>
-              <PostTime
-                createdAt={post.createdAt}
-                updatedAt={post.updatedAt}
-                enableItemProp
-              />
-              <Typography
-                sx={{
-                  textDecoration: "none",
-                  fontSize: "1.875rem",
-                  letterSpacing: "-0.025rem",
-                  fontWeight: 700,
-                }}
-                component="h1"
-              >
-                {post.title}
-              </Typography>
-              <Box display="flex" alignItems="center" fontSize="small">
-                <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
-                タグ
-              </Box>
-              <Tags tags={post.tags} />
-              <Divider sx={{ pt: 2 }} />
-              <div>
-                <PostPageRenderer post={post} />
-              </div>
-            </Stack>
-          </>
-        )}
-      </Container>
+      {router.isFallback ? (
+        <h1>Loading…</h1>
+      ) : (
+        <>
+          <Head>
+            <title>{post.title} | K.W.info</title>
+          </Head>
+          <PostTime
+            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
+            enableItemProp
+          />
+          {post.title}
+          タグ
+          <Tags tags={post.tags} />
+          <PostPageRenderer post={post} />
+        </>
+      )}
     </CommonLayout>
   );
 };

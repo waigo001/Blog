@@ -2,10 +2,7 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import React, { useState } from "react";
 
 import DarkTheme from "prism-react-renderer/themes/nightOwl";
-import { Box } from "@mui/system";
-import type { TypographyOptions } from "@mui/material/styles/createTypography";
 import { Element } from "hast";
-import { alpha } from "@mui/material/styles";
 
 type Props = {
   children: React.ReactNode;
@@ -53,22 +50,12 @@ const CodeBlock: React.VFC<Props> = ({
 
   if (inline)
     return (
-      <Box
-        component="code"
+      <div
         className={className}
         {...props}
-        px={0.75}
-        py={0.25}
-        mx={0.25}
-        fontFamily={(theme) =>
-          (theme.typography as TypographyOptions).fontFamilyCode
-        }
-        color="text.primary"
-        bgcolor={(theme) => alpha(theme.palette.primary.light, 0.2)}
-        borderRadius={1.5}
       >
         {children}
-      </Box>
+      </div>
     );
 
   const highlightColor = prismTheme.plain.color + "22";
@@ -79,22 +66,10 @@ const CodeBlock: React.VFC<Props> = ({
   return (
     <>
       {title && (
-        <Box
-          py={0.5}
-          px={2}
-          display="inline-block"
-          position="relative"
-          top="1rem"
-          left="1rem"
-          bgcolor={prismTheme.plain.color}
-          color={prismTheme.plain.backgroundColor}
-          fontFamily={(theme) =>
-            (theme.typography as TypographyOptions).fontFamilyCode
-          }
-          borderRadius={2}
+        <div
         >
           {title}
-        </Box>
+        </div>
       )}
       <Highlight
         {...defaultProps}
@@ -103,50 +78,32 @@ const CodeBlock: React.VFC<Props> = ({
         theme={prismTheme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <Box
-            component="pre"
+          <pre
             className={className}
             style={style}
             data-language={language}
-            m={0}
-            sx={{
-              overflowX: "auto",
-              borderRadius: 2,
-            }}
+            
           >
-            <Box
-              component="code"
+            <code
               className={className}
-              py={3}
-              sx={{ float: "left", minWidth: "100%" }}
             >
               {tokens.map((line, i) => (
-                <Box
+                <div
                   key={i}
                   {...getLineProps({ line, key: i })}
-                  px={3}
-                  sx={{
-                    bgcolor: shouldHighlightLine(i)
-                      ? highlightColor
-                      : undefined,
-                    fontFamily: (theme) =>
-                      (theme.typography as TypographyOptions).fontFamilyCode,
-                  }}
+
                 >
                   {line.map((token, key) => (
-                    <Box
-                      component="span"
-                      sx={{
-                        wordWrap: "normal",
-                      }}
+                    <span
+                   
                       key={key}
                       {...getTokenProps({ token, key })}
                     />
                   ))}
-                </Box>
+                </div>
               ))}
-            </Box>
-          </Box>
+            </code>
+          </pre>
         )}
       </Highlight>
     </>

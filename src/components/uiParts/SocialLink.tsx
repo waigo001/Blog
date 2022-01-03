@@ -1,4 +1,3 @@
-import { IconButton } from "@mui/material";
 import React from "react";
 
 type Props = {
@@ -12,17 +11,7 @@ const SocialLink: React.VFC<Props> = ({
   href,
   icon,
 }) => {
-  return (
-    <IconButton
-      aria-label={ariaLabel}
-      href={href}
-      target="_blank"
-      rel="noopener"
-      size="large"
-    >
-      {icon}
-    </IconButton>
-  );
+  return <>{icon}</>;
 };
 
 export default SocialLink;
