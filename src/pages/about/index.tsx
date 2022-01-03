@@ -1,8 +1,9 @@
+import { Container } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import { CommonLayout } from "src/components/layout";
+import { AboutPageRenderer } from "src/components/uiParts";
 import { getAboutPage } from "src/lib/about";
 
 type Props = {
@@ -11,17 +12,14 @@ type Props = {
 
 const AboutPage: NextPage<Props> = ({ aboutPage }) => {
   return (
-    <div>
+    <CommonLayout>
       <Head>
         <title>About | K.W.info</title>
       </Head>
-      <main>
-        <h1>{aboutPage.title}</h1>
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {aboutPage.content}
-        </ReactMarkdown>
-      </main>
-    </div>
+      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }} maxWidth="md">
+        <AboutPageRenderer content={aboutPage.content} />
+      </Container>
+    </CommonLayout>
   );
 };
 

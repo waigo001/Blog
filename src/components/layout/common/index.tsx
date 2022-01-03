@@ -9,16 +9,15 @@ import {
 import { AppBar, Toolbar, IconButton, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import PageLink from "src/components/PageLink";
-import SocialLink from "src/components/SocialLink";
-import Title from "src/components/Title";
+import { Title, PageLink, SocialLink } from "src/components/uiParts";
+
 import BlogDrawer from "./drawer";
 
 type Props = {
   children?: React.ReactNode;
 };
 
-const BlogLayout: React.VFC<Props> = ({ children }) => {
+const CommonLayout: React.VFC<Props> = ({ children }) => {
   const [isOpen, setDrawerState] = useState<boolean>(false);
 
   const openDrawer = () => {
@@ -114,4 +113,4 @@ const BlogLayout: React.VFC<Props> = ({ children }) => {
   );
 };
 
-export default BlogLayout;
+export default CommonLayout;
