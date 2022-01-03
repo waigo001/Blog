@@ -2,8 +2,8 @@ import { Container } from "@mui/material";
 import { NextPage } from "next";
 import Head from "next/head";
 import React from "react";
-import { CommonLayout } from "src/components/Layout";
-import { AboutPageRenderer } from "src/components/MarkdownRenderer";
+import { CommonLayout } from "src/components/layout";
+import { AboutPageRenderer } from "src/components/uiParts";
 import { getAboutPage } from "src/lib/about";
 
 type Props = {

@@ -9,9 +9,8 @@ import {
 import { AppBar, Toolbar, IconButton, Stack, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useState } from "react";
-import PageLink from "src/components/PageLink";
-import SocialLink from "src/components/SocialLink";
-import Title from "src/components/Title";
+import { Title, PageLink, SocialLink } from "src/components/uiParts";
+
 import BlogDrawer from "./drawer";
 
 type Props = {

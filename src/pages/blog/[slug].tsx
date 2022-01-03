@@ -6,12 +6,10 @@ import Head from "next/head";
 
 import { NextPage } from "next";
 
-import CommonLayout from "src/components/Layout/common";
 import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import { PostPageRenderer } from "src/components/MarkdownRenderer";
-import PostTime from "src/components/PostTime";
 import { LocalOffer } from "@mui/icons-material";
-import Tags from "src/components/Tags";
+import { CommonLayout } from "src/components/layout";
+import { PostTime, Tags, PostPageRenderer } from "src/components/uiParts";
 
 type Props = {
   post: Post;

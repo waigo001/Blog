@@ -10,7 +10,7 @@ type Props = {
   post: Post;
 };
 
-export const PostPageRenderer: React.VFC<Props> = ({ post }) => {
+const PostPageRenderer: React.VFC<Props> = ({ post }) => {
   const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
     const { alt, src } = props;
 
@@ -32,3 +32,4 @@ export const PostPageRenderer: React.VFC<Props> = ({ post }) => {
   );
 };
 
+export default PostPageRenderer;

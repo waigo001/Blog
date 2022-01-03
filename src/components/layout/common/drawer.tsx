@@ -6,8 +6,7 @@ import {
   SwipeableDrawerProps,
 } from "@mui/material";
 import React from "react";
-import PageLink from "src/components/PageLink";
-import Title from "src/components/Title";
+import { PageLink, Title } from "src/components/uiParts";
 
 interface Props extends SwipeableDrawerProps {}
 
