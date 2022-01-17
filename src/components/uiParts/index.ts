@@ -1,4 +1,3 @@
-export { default as Title } from "./Title";
 export * from "./PostTime";
 
 export { default as Tags } from "./Tags";
@@ -10,3 +9,4 @@ export { default as BlogCard } from "./BlogCard";
 
 export { default as PostPageRenderer } from "./MarkdownRenderer/PostPage";
 export { default as AboutPageRenderer } from "./MarkdownRenderer/AboutPage";
+export { default as Logo } from "./Logo";
