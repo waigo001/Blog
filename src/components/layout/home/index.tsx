@@ -23,17 +23,21 @@ const HomeLayout: React.VFC<Props> = ({ children }) => {
         <Logo height="12" />
       </header>
       <nav>
-        <HStack mt="8">
-          <Link href="/blog" passHref>
-            <Button leftIcon={<FaCalendarDay />} variant="ghost">
-              Blog
-            </Button>
-          </Link>
-          <Link href="/about" passHref>
-            <Button leftIcon={<FaInfoCircle />} variant="ghost">
-              About
-            </Button>
-          </Link>
+        <HStack mt="8" spacing={4} as="ul" listStyleType="none">
+          <li>
+            <Link href="/blog" passHref>
+              <Button as="a" leftIcon={<FaCalendarDay />} variant="ghost">
+                Blog
+              </Button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" passHref>
+              <Button as="a" leftIcon={<FaInfoCircle />} variant="ghost">
+                About
+              </Button>
+            </Link>
+          </li>
         </HStack>
       </nav>
       <main>{children}</main>

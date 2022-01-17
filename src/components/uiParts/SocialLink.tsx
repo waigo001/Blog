@@ -7,11 +7,7 @@ interface Props extends IconButtonProps {
 }
 
 const SocialLink: React.VFC<Props> = ({ href, ...props }) => {
-  return (
-    <Link href={href} isExternal>
-      <IconButton {...props} />
-    </Link>
-  );
+  return <IconButton as={Link} isExternal href={href} {...props} />;
 };
 
 export default SocialLink;
