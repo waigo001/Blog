@@ -8,13 +8,13 @@ type Props = {
 
 const Tags: React.VFC<Props> = ({ tags }) => {
   return (
-    <Wrap spacing="2" my="1">
+    <Wrap spacing="2" my="1" align="center">
       {tags &&
         tags.map((tag) => (
           <WrapItem key={tag}>
-            <Tag borderRadius="full" variant="solid">
+            <Tag size="md" borderRadius="full" pr="2.5" variant="solid">
               <TagLeftIcon as={FaHashtag} />
-              <TagLabel> {tag}</TagLabel>
+              <TagLabel lineHeight="normal"> {tag}</TagLabel>
             </Tag>
           </WrapItem>
         ))}
