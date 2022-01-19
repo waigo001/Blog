@@ -4,6 +4,7 @@ import React from "react";
 import { BlogCard } from "src/components/uiParts";
 import { CommonLayout } from "src/components/layout";
 import { getAllPosts } from "src/lib/post";
+import { SimpleGrid } from "@chakra-ui/react";
 
 type Props = {
   allPosts: Post[];
@@ -15,9 +16,11 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
       <Head>
         <title>Blog | K.W.info</title>
       </Head>
-      {allPosts.map((post) => (
-        <BlogCard post={post} key={post.slug} />
-      ))}
+      <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
+        {allPosts.map((post) => (
+          <BlogCard post={post} key={post.slug} />
+        ))}
+      </SimpleGrid>
     </CommonLayout>
   );
 };

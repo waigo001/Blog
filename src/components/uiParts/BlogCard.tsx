@@ -1,8 +1,8 @@
+import { Flex, useColorModeValue, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
-import { useDialog } from "src/hooks/useDialog";
+import { FaTags } from "react-icons/fa";
 import PostTime from "./PostTime";
-import ShareDialog from "./ShareDialog";
 import Tags from "./Tags";
 
 type Props = {
@@ -10,25 +10,31 @@ type Props = {
 };
 
 const BlogCard: React.VFC<Props> = ({ post }) => {
-  const { isOpen, onClose } = useDialog(false);
-
   return (
-    <div>
+    <Flex
+      as="article"
+      direction="column"
+      bg={useColorModeValue("white", "gray.800")}
+      boxShadow={useColorModeValue("md", "xl")}
+      p="4"
+      rounded="lg"
+      h="100%"
+    >
       {post.createdAt && (
         <PostTime createdAt={post.createdAt} updatedAt={post.updatedAt} />
       )}
       <Link href={`/blog/${post.slug}`} passHref>
-        {post.title}
+        <Text as="a" fontSize="xl" fontWeight="bold" my="2">
+          <h2>{post.title}</h2>
+        </Text>
       </Link>
-      タグ
+      <Flex flex="1" />
+      <Flex align="center" gridGap="2" mt="2" mb="1">
+        <FaTags />
+        <Text fontSize="sm">タグ</Text>
+      </Flex>
       <Tags tags={post.tags} />
-      <ShareDialog
-        title={post.title}
-        slug={post.slug}
-        isOpen={isOpen}
-        onClose={onClose}
-      />
-    </div>
+    </Flex>
   );
 };
 

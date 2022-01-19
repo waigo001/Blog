@@ -1,5 +1,7 @@
+import { Flex, Icon, Text } from "@chakra-ui/react";
 import { format, isAfter, parseISO } from "date-fns";
 import React from "react";
+import { FaClock, FaRegClock } from "react-icons/fa";
 
 type Props = {
   createdAt: string;
@@ -17,21 +19,32 @@ const PostTime: React.VFC<Props> = ({
   const isUpdated = isAfter(updatedTime, createdTime);
 
   return (
-    <div>
-      <time
-        dateTime={updatedAt}
-        itemProp={enableItemProp ? "datemodified" : undefined}
-      >
-        {format(updatedTime, "yyyy/MM/dd")}
-      </time>
-
-      <time
-        dateTime={createdAt}
-        itemProp={enableItemProp ? "datepublished" : undefined}
-      >
-        {format(createdTime, "yyyy/MM/dd")}
-      </time>
-    </div>
+    <>
+      <Flex align="center" gridGap="2" display={isUpdated ? "flex" : "none"}>
+        <Icon as={FaRegClock} />
+        <Text
+          fontSize="sm"
+          as="time"
+          dateTime={updatedAt}
+          itemProp={enableItemProp ? "datemodified" : undefined}
+          lineHeight={1}
+        >
+          {format(updatedTime, "yyyy/MM/dd")}
+        </Text>
+      </Flex>
+      <Flex align="center" gridGap="2" display={!isUpdated ? "flex" : "none"}>
+        <Icon as={FaClock} />
+        <Text
+          fontSize="sm"
+          as="time"
+          dateTime={createdAt}
+          itemProp={enableItemProp ? "datepublished" : undefined}
+          lineHeight={1}
+        >
+          {format(createdTime, "yyyy/MM/dd")}
+        </Text>
+      </Flex>
+    </>
   );
 };
 
