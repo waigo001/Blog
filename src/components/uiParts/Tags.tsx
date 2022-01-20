@@ -1,4 +1,4 @@
-import { Tag, TagLabel, TagLeftIcon, Wrap, WrapItem } from "@chakra-ui/react";
+import { Button, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
 import { FaHashtag } from "react-icons/fa";
 
@@ -8,14 +8,18 @@ type Props = {
 
 const Tags: React.VFC<Props> = ({ tags }) => {
   return (
-    <Wrap spacing="2" my="1" align="center">
+    <Wrap spacing="2" mt="3" align="center">
       {tags &&
         tags.map((tag) => (
           <WrapItem key={tag}>
-            <Tag size="md" borderRadius="full" pr="2.5" variant="solid">
-              <TagLeftIcon as={FaHashtag} />
-              <TagLabel lineHeight="normal"> {tag}</TagLabel>
-            </Tag>
+            <Button
+              variant="link"
+              size="xs"
+              leftIcon={<FaHashtag />}
+              iconSpacing={0.5}
+            >
+              {tag}
+            </Button>
           </WrapItem>
         ))}
     </Wrap>
