@@ -32,9 +32,13 @@ const NavLink: React.VFC<NavLinkProps> = ({ href, children, icon }) => {
       <Link href={href} passHref>
         <Button
           as="a"
+          aria-current={isActive ? "page" : undefined}
           leftIcon={icon}
           variant="ghost"
           colorScheme={isActive ? "cyan" : "gray"}
+          _activeLink={{
+            bg: useColorModeValue("cyan.50", "rgba(48, 140, 122, 0.3)"),
+          }}
         >
           {children}
         </Button>
@@ -91,7 +95,7 @@ const HeaderContent: React.VFC = () => {
 
 const Header: React.VFC<HTMLChakraProps<"header">> = ({ ...props }) => {
   const bg = useColorModeValue("white", "gray.800");
-  const shadow = useColorModeValue("md", "xl");
+  const shadow = useColorModeValue("md", "2xl");
 
   return (
     <chakra.header

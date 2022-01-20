@@ -1,12 +1,5 @@
 import React from "react";
-import {
-  chakra,
-  Flex,
-  HTMLChakraProps,
-  useColorModeValue,
-  Text,
-  Box,
-} from "@chakra-ui/react";
+import { chakra, Flex, HTMLChakraProps, Text, Box } from "@chakra-ui/react";
 import { format } from "date-fns";
 import { SocialLink } from "src/components/uiParts";
 import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
@@ -62,9 +55,8 @@ const FooterContent = () => {
 };
 
 const Footer = (props: HTMLChakraProps<"footer">) => {
-  const bg = useColorModeValue("white", "gray.800");
   return (
-    <chakra.footer width="full" bg={bg} {...props}>
+    <chakra.footer width="full" {...props}>
       <chakra.div height="3rem" mx="auto" maxW="8xl">
         <FooterContent />
       </chakra.div>

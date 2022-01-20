@@ -10,6 +10,7 @@ import {
   HStack,
   ListItem,
   UnorderedList,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -38,11 +39,15 @@ const NavLink: React.VFC<NavLinkProps> = ({ href, children, icon }) => {
       <Link href={href} passHref>
         <Button
           as="a"
+          aria-current={isActive ? "page" : undefined}
           leftIcon={icon}
-          w="100%"
+          isFullWidth
           justifyContent="left"
           variant={"ghost"}
           colorScheme={isActive ? "cyan" : "gray"}
+          _activeLink={{
+            bg: useColorModeValue("cyan.50", "rgba(48, 140, 122, 0.3)"),
+          }}
         >
           {children}
         </Button>
@@ -58,18 +63,13 @@ type Props = {
 
 const MobileNavContent: React.VFC<Props> = ({ isOpen, onClose }) => {
   return (
-    <Drawer
-      placement="left"
-      isOpen={isOpen}
-      onClose={onClose}
-      size="xs"
-    >
+    <Drawer placement="left" isOpen={isOpen} onClose={onClose} size="xs">
       <DrawerOverlay />
 
       <DrawerContent>
         <DrawerCloseButton size="lg" />
 
-        <DrawerHeader>
+        <DrawerHeader pt="6">
           <Logo height="6" />
         </DrawerHeader>
         <DrawerBody>

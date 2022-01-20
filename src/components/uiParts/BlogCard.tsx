@@ -15,7 +15,7 @@ const BlogCard: React.VFC<Props> = ({ post }) => {
       as="article"
       direction="column"
       bg={useColorModeValue("white", "gray.800")}
-      boxShadow={useColorModeValue("md", "xl")}
+      boxShadow={useColorModeValue("md", "2xl")}
       p="4"
       rounded="lg"
       h="100%"
@@ -29,10 +29,6 @@ const BlogCard: React.VFC<Props> = ({ post }) => {
         </Text>
       </Link>
       <Flex flex="1" />
-      <Flex align="center" gridGap="2" mt="2" mb="1">
-        <FaTags />
-        <Text fontSize="sm">タグ</Text>
-      </Flex>
       <Tags tags={post.tags} />
     </Flex>
   );
