@@ -21,7 +21,7 @@ const Table = (props: HTMLChakraProps<"table">) => (
 const THead = (props: HTMLChakraProps<"th">) => (
   <chakra.th
     bg={useColorModeValue("gray.50", "whiteAlpha.100")}
-    fontWeight="semibold"
+    fontWeight="bold"
     p={2}
     fontSize="sm"
     {...props}
@@ -105,4 +105,7 @@ export const MdComponents: Partial<
   li: ({ node, ordered, ...props }) => (
     <chakra.li lineHeight="1.7" {...props} />
   ),
+  table: Table,
+  th: ({ children }) => <THead>{children}</THead>,
+  td: ({ children }) => <TData>{children}</TData>,
 };
