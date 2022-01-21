@@ -28,13 +28,18 @@ const theme = extendTheme({
       lineHeight: 1.2,
       fontWeight: "bold",
       fontSize: "1.875rem",
+      letterSpacing: "-0.025rem",
     },
     h2: {
-      mt: "3rem",
+      mt: "2.5rem",
       mb: "0.5rem",
-      lineHeight: 1.3,
-      fontWeight: "semibold",
+      lineHeight: 1.2,
+      fontWeight: "bold",
       fontSize: "1.5rem",
+      borderLeftWidth: 4,
+      pl: "1.5",
+      pt: "1",
+      pb: "0.5",
       "& + h3": {
         mt: "1.5rem",
       },
@@ -43,13 +48,13 @@ const theme = extendTheme({
       mt: "3rem",
       mb: "0.25rem",
       lineHeight: 1.25,
-      fontWeight: "semibold",
+      fontWeight: "bold",
       fontSize: "1.25rem",
     },
     h4: {
       mt: "3rem",
       lineHeight: 1.375,
-      fontWeight: "semibold",
+      fontWeight: "bold",
       fontSize: "1.125rem",
     },
     a: {
@@ -65,13 +70,17 @@ const theme = extendTheme({
     },
     p: {
       mt: "1.25rem",
+      mb: "0.5rem",
       lineHeight: 1.7,
       "blockquote &": {
-        mt: 0,
+        my: 1,
+      },
+      "li &": {
+        my: 0,
       },
     },
     hr: {
-      my: "4rem",
+      my: "1",
     },
     blockquote: {
       bg: "cyan.100",
@@ -89,13 +98,13 @@ const theme = extendTheme({
       "& > * + *": {
         mt: "0.25rem",
       },
+      "li &": { mt: 0 },
     },
     code: {
       rounded: "sm",
       px: "1",
       fontSize: "0.875em",
       py: "2px",
-      whiteSpace: "nowrap",
       lineHeight: "normal",
     },
   },

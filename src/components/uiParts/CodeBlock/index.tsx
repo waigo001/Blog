@@ -2,14 +2,11 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import React, { useState } from "react";
 
 import DarkTheme from "prism-react-renderer/themes/nightOwl";
-import { Element } from "hast";
+import LightTheme from "prism-react-renderer/themes/github";
 
-type Props = {
-  children: React.ReactNode;
-  className?: string;
-  inline?: boolean;
-  node?: Element;
-};
+import { Box, chakra, useColorModeValue } from "@chakra-ui/react";
+import { CodeProps } from "react-markdown/lib/ast-to-react";
+
 const RE = /{([\d,-]+)}/;
 
 const calculateLinesToHighlight = (meta = "") => {
@@ -37,7 +34,7 @@ const getParams = (className = "") => {
   return [language.replace(/language-/, ""), title];
 };
 
-const CodeBlock: React.VFC<Props> = ({
+const CodeBlock: React.VFC<CodeProps> = ({
   children,
   className,
   inline,
@@ -46,16 +43,19 @@ const CodeBlock: React.VFC<Props> = ({
 }) => {
   const [language, title] = getParams(className);
   const [editorCode] = useState(String(children).trim());
-  const prismTheme = DarkTheme;
+  const prismTheme = useColorModeValue(LightTheme, DarkTheme);
+  const inlineCodeColor = useColorModeValue("cyan.700", "cyan.200");
 
   if (inline)
     return (
-      <div
-        className={className}
+      <chakra.code
+        apply="mdx.code"
+        color={inlineCodeColor}
+        fontFamily="mono"
         {...props}
       >
         {children}
-      </div>
+      </chakra.code>
     );
 
   const highlightColor = prismTheme.plain.color + "22";
@@ -66,10 +66,22 @@ const CodeBlock: React.VFC<Props> = ({
   return (
     <>
       {title && (
-        <div
+        <Box
+          py={0.5}
+          px={2}
+          display="inline-block"
+          position="relative"
+          top="1rem"
+          left="1rem"
+          fontFamily="mono"
+          fontWeight="bold"
+          fontSize="sm"
+          bg={prismTheme.plain.color}
+          color={prismTheme.plain.backgroundColor}
+          borderRadius="md"
         >
           {title}
-        </div>
+        </Box>
       )}
       <Highlight
         {...defaultProps}
@@ -78,32 +90,43 @@ const CodeBlock: React.VFC<Props> = ({
         theme={prismTheme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre
+          <Box
+            as="pre"
+            overflowX="auto"
+            borderRadius="md"
+            my="2"
             className={className}
             style={style}
             data-language={language}
-            
           >
-            <code
+            <Box
+              as="code"
               className={className}
+              py={3}
+              float="left"
+              minW="full"
             >
               {tokens.map((line, i) => (
-                <div
+                <Box
                   key={i}
                   {...getLineProps({ line, key: i })}
-
+                  bg={shouldHighlightLine(i) ? highlightColor : undefined}
+                  px={3}
                 >
                   {line.map((token, key) => (
-                    <span
-                   
+                    <Box
+                      as="span"
+                      sx={{
+                        wordWrap: "normal",
+                      }}
                       key={key}
                       {...getTokenProps({ token, key })}
                     />
                   ))}
-                </div>
+                </Box>
               ))}
-            </code>
-          </pre>
+            </Box>
+          </Box>
         )}
       </Highlight>
     </>
