@@ -101,11 +101,12 @@ const theme = extendTheme({
       "li &": { mt: 0 },
     },
     code: {
-      rounded: "sm",
+      rounded: "md",
       px: "1",
       fontSize: "0.875em",
-      py: "2px",
+      py: "0.5",
       lineHeight: "normal",
+      mx:"0.5"
     },
   },
 });

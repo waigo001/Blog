@@ -45,12 +45,14 @@ const CodeBlock: React.VFC<CodeProps> = ({
   const [editorCode] = useState(String(children).trim());
   const prismTheme = useColorModeValue(LightTheme, DarkTheme);
   const inlineCodeColor = useColorModeValue("cyan.700", "cyan.200");
+  const bgCodeColor = useColorModeValue("gray.100", "gray.900");
 
   if (inline)
     return (
       <chakra.code
         apply="mdx.code"
         color={inlineCodeColor}
+        bg={bgCodeColor}
         fontFamily="mono"
         {...props}
       >
