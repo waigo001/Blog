@@ -23,7 +23,7 @@ const HomeLayout: React.VFC<Props> = ({ children }) => {
         <Logo height="12" />
       </header>
       <nav>
-        <HStack mt="8" spacing={4} as="ul" listStyleType="none">
+        <HStack mt="12" spacing={4} as="ul" listStyleType="none">
           <li>
             <Link href="/blog" passHref>
               <Button as="a" leftIcon={<FaCalendarDay />} variant="ghost">
@@ -42,7 +42,7 @@ const HomeLayout: React.VFC<Props> = ({ children }) => {
       </nav>
       <main>{children}</main>
       <footer>
-        <VStack spacing={4} mt="4">
+        <VStack spacing={4} mt="8">
           <HStack spacing={4}>
             <SocialLink
               href={"https://github.com/" + process.env.ID_GITHUB}

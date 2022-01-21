@@ -1,7 +1,6 @@
 import { Flex, useColorModeValue, Text } from "@chakra-ui/react";
 import Link from "next/link";
 import React from "react";
-import { FaTags } from "react-icons/fa";
 import PostTime from "./PostTime";
 import Tags from "./Tags";
 
