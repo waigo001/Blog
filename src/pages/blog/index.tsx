@@ -16,7 +16,7 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
       <Head>
         <title>Blog | K.W.info</title>
       </Head>
-      <SimpleGrid columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
+      <SimpleGrid as="section" columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
         {allPosts.map((post) => (
           <BlogCard post={post} key={post.slug} />
         ))}

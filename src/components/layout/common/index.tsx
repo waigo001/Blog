@@ -11,7 +11,7 @@ const CommonLayout: React.VFC<Props> = ({ children }) => {
   return (
     <VStack minH="100vh">
       <Header />
-      <Container maxW="5xl" flex="1">
+      <Container as="main" maxW="5xl" flex="1">
         {children}
       </Container>
       <Footer />

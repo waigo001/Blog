@@ -27,7 +27,12 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
       {router.isFallback ? (
         <h1>Loading…</h1>
       ) : (
-        <Flex direction="column" px={{ base: "0", sm: "4", md: "6" }} py="2">
+        <Flex
+          as="article"
+          direction="column"
+          px={{ base: "0", sm: "4", md: "6" }}
+          py="2"
+        >
           <Head>
             <title>{post.title} | K.W.info</title>
           </Head>
@@ -42,9 +47,9 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
 
           <Tags tags={post.tags} />
           <Divider my="4" />
-          <div>
+          <section>
             <PostPageRenderer post={post} />
-          </div>
+          </section>
         </Flex>
       )}
     </CommonLayout>
