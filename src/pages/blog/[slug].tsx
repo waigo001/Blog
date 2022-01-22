@@ -6,10 +6,9 @@ import Head from "next/head";
 
 import { NextPage } from "next";
 
-import { Box, Container, Divider, Stack, Typography } from "@mui/material";
-import { LocalOffer } from "@mui/icons-material";
 import { CommonLayout } from "src/components/layout";
 import { PostTime, Tags, PostPageRenderer } from "src/components/uiParts";
+import { Divider, Flex, Text } from "@chakra-ui/react";
 
 type Props = {
   post: Post;
@@ -25,44 +24,34 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
 
   return (
     <CommonLayout>
-      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }} maxWidth="md">
-        {router.isFallback ? (
-          <h1>Loading…</h1>
-        ) : (
-          <>
-            <Head>
-              <title>{post.title} | K.W.info</title>
-            </Head>
-            <Stack spacing={1.25}>
-              <PostTime
-                createdAt={post.createdAt}
-                updatedAt={post.updatedAt}
-                enableItemProp
-              />
-              <Typography
-                sx={{
-                  textDecoration: "none",
-                  fontSize: "1.875rem",
-                  letterSpacing: "-0.025rem",
-                  fontWeight: 700,
-                }}
-                component="h1"
-              >
-                {post.title}
-              </Typography>
-              <Box display="flex" alignItems="center" fontSize="small">
-                <LocalOffer sx={{ fontSize: "1rem", mr: 0.5 }} />
-                タグ
-              </Box>
-              <Tags tags={post.tags} />
-              <Divider sx={{ pt: 2 }} />
-              <div>
-                <PostPageRenderer post={post} />
-              </div>
-            </Stack>
-          </>
-        )}
-      </Container>
+      {router.isFallback ? (
+        <h1>Loading…</h1>
+      ) : (
+        <Flex
+          as="article"
+          direction="column"
+          px={{ base: "0", sm: "4", md: "6" }}
+          py="2"
+        >
+          <Head>
+            <title>{post.title} | K.W.info</title>
+          </Head>
+          <PostTime
+            createdAt={post.createdAt}
+            updatedAt={post.updatedAt}
+            enableItemProp
+          />
+          <Text as="h1" fontSize="xl" fontWeight="bold" my="4">
+            {post.title}
+          </Text>
+
+          <Tags tags={post.tags} />
+          <Divider my="4" />
+          <section>
+            <PostPageRenderer post={post} />
+          </section>
+        </Flex>
+      )}
     </CommonLayout>
   );
 };

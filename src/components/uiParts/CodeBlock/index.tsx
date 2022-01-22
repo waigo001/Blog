@@ -2,17 +2,11 @@ import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import React, { useState } from "react";
 
 import DarkTheme from "prism-react-renderer/themes/nightOwl";
-import { Box } from "@mui/system";
-import type { TypographyOptions } from "@mui/material/styles/createTypography";
-import { Element } from "hast";
-import { alpha } from "@mui/material/styles";
+import LightTheme from "prism-react-renderer/themes/github";
 
-type Props = {
-  children: React.ReactNode;
-  className?: string;
-  inline?: boolean;
-  node?: Element;
-};
+import { Box, chakra, useColorModeValue } from "@chakra-ui/react";
+import { CodeProps } from "react-markdown/lib/ast-to-react";
+
 const RE = /{([\d,-]+)}/;
 
 const calculateLinesToHighlight = (meta = "") => {
@@ -40,7 +34,7 @@ const getParams = (className = "") => {
   return [language.replace(/language-/, ""), title];
 };
 
-const CodeBlock: React.VFC<Props> = ({
+const CodeBlock: React.VFC<CodeProps> = ({
   children,
   className,
   inline,
@@ -49,26 +43,21 @@ const CodeBlock: React.VFC<Props> = ({
 }) => {
   const [language, title] = getParams(className);
   const [editorCode] = useState(String(children).trim());
-  const prismTheme = DarkTheme;
+  const prismTheme = useColorModeValue(LightTheme, DarkTheme);
+  const inlineCodeColor = useColorModeValue("cyan.700", "cyan.200");
+  const bgCodeColor = useColorModeValue("gray.100", "gray.900");
 
   if (inline)
     return (
-      <Box
-        component="code"
-        className={className}
+      <chakra.code
+        apply="mdx.code"
+        color={inlineCodeColor}
+        bg={bgCodeColor}
+        fontFamily="mono"
         {...props}
-        px={0.75}
-        py={0.25}
-        mx={0.25}
-        fontFamily={(theme) =>
-          (theme.typography as TypographyOptions).fontFamilyCode
-        }
-        color="text.primary"
-        bgcolor={(theme) => alpha(theme.palette.primary.light, 0.2)}
-        borderRadius={1.5}
       >
         {children}
-      </Box>
+      </chakra.code>
     );
 
   const highlightColor = prismTheme.plain.color + "22";
@@ -86,12 +75,12 @@ const CodeBlock: React.VFC<Props> = ({
           position="relative"
           top="1rem"
           left="1rem"
-          bgcolor={prismTheme.plain.color}
+          fontFamily="mono"
+          fontWeight="bold"
+          fontSize="sm"
+          bg={prismTheme.plain.color}
           color={prismTheme.plain.backgroundColor}
-          fontFamily={(theme) =>
-            (theme.typography as TypographyOptions).fontFamilyCode
-          }
-          borderRadius={2}
+          borderRadius="md"
         >
           {title}
         </Box>
@@ -104,38 +93,31 @@ const CodeBlock: React.VFC<Props> = ({
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <Box
-            component="pre"
+            as="pre"
+            overflowX="auto"
+            borderRadius="md"
+            my="2"
             className={className}
             style={style}
             data-language={language}
-            m={0}
-            sx={{
-              overflowX: "auto",
-              borderRadius: 2,
-            }}
           >
             <Box
-              component="code"
+              as="code"
               className={className}
               py={3}
-              sx={{ float: "left", minWidth: "100%" }}
+              float="left"
+              minW="full"
             >
               {tokens.map((line, i) => (
                 <Box
                   key={i}
                   {...getLineProps({ line, key: i })}
+                  bg={shouldHighlightLine(i) ? highlightColor : undefined}
                   px={3}
-                  sx={{
-                    bgcolor: shouldHighlightLine(i)
-                      ? highlightColor
-                      : undefined,
-                    fontFamily: (theme) =>
-                      (theme.typography as TypographyOptions).fontFamilyCode,
-                  }}
                 >
                   {line.map((token, key) => (
                     <Box
-                      component="span"
+                      as="span"
                       sx={{
                         wordWrap: "normal",
                       }}

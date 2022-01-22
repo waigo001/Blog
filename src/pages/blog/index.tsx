@@ -1,10 +1,10 @@
-import { Container, Grid } from "@mui/material";
-import { NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import React from "react";
 import { BlogCard } from "src/components/uiParts";
 import { CommonLayout } from "src/components/layout";
 import { getAllPosts } from "src/lib/post";
+import { SimpleGrid } from "@chakra-ui/react";
 
 type Props = {
   allPosts: Post[];
@@ -16,22 +16,18 @@ const BlogPage: NextPage<Props> = ({ allPosts }) => {
       <Head>
         <title>Blog | K.W.info</title>
       </Head>
-      <Container sx={{ pt: { xs: 9, sm: 10 }, pb: 8 }}>
-        <Grid container spacing={2}>
-          {allPosts.map((post) => (
-            <Grid item xs={12} sm={12} md={6} lg={4} key={post.slug}>
-              <BlogCard post={post} />
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+      <SimpleGrid as="section" columns={{ base: 1, md: 2, xl: 3 }} spacing={4}>
+        {allPosts.map((post) => (
+          <BlogCard post={post} key={post.slug} />
+        ))}
+      </SimpleGrid>
     </CommonLayout>
   );
 };
 
 export default BlogPage;
 
-export const getStaticProps = async () => {
+export const getStaticProps: GetStaticProps = async () => {
   const allPosts = getAllPosts();
 
   return {

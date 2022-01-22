@@ -1,28 +1,13 @@
-import { IconButton } from "@mui/material";
+import { Link } from "@chakra-ui/layout";
+import { IconButton, IconButtonProps } from "@chakra-ui/react";
 import React from "react";
 
-type Props = {
-  "aria-label": string;
-  href: string;
-  icon: React.ReactNode;
-};
+interface Props extends IconButtonProps {
+  href?: string;
+}
 
-const SocialLink: React.VFC<Props> = ({
-  "aria-label": ariaLabel,
-  href,
-  icon,
-}) => {
-  return (
-    <IconButton
-      aria-label={ariaLabel}
-      href={href}
-      target="_blank"
-      rel="noopener"
-      size="large"
-    >
-      {icon}
-    </IconButton>
-  );
+const SocialLink: React.VFC<Props> = ({ href, ...props }) => {
+  return <IconButton as={Link} isExternal href={href} {...props} />;
 };
 
 export default SocialLink;

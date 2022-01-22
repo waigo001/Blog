@@ -1,7 +1,16 @@
-import { GitHub, Info, Instagram, Today, Twitter } from "@mui/icons-material";
-import { Stack, Typography } from "@mui/material";
 import React from "react";
-import { PageLink, SocialLink, Title } from "src/components/uiParts";
+
+import { Button, HStack, Text, VStack } from "@chakra-ui/react";
+import {
+  FaCalendarDay,
+  FaGithub,
+  FaInfoCircle,
+  FaInstagram,
+  FaTwitter,
+} from "react-icons/fa";
+import { SocialLink, Logo } from "src/components/uiParts";
+import { format } from "date-fns";
+import Link from "next/link";
 
 type Props = {
   children?: React.ReactNode;
@@ -9,80 +18,78 @@ type Props = {
 
 const HomeLayout: React.VFC<Props> = ({ children }) => {
   return (
-    <Stack
-      alignItems="center"
-      justifyContent="center"
-      spacing={4}
-      sx={{ minHeight: "100vh" }}
-    >
+    <VStack minH={"100vh"} justify="center">
       <header>
-        <Typography
-          variant="h2"
-          component="h1"
-          align="center"
-          sx={{
-            m: 3,
-            pt: 2,
-          }}
-        >
-          <Title />
-        </Typography>
+        <Logo height="12" />
       </header>
       <nav>
-        <Stack direction="row" spacing={2} justifyContent="center">
-          <PageLink icon={<Today />} to="/blog">
-            Blog
-          </PageLink>
-
-          <PageLink icon={<Info />} to="/about">
-            About
-          </PageLink>
-        </Stack>
+        <HStack mt="12" spacing={4} as="ul" listStyleType="none">
+          <li>
+            <Link href="/blog" passHref>
+              <Button as="a" leftIcon={<FaCalendarDay />} variant="ghost">
+                Blog
+              </Button>
+            </Link>
+          </li>
+          <li>
+            <Link href="/about" passHref>
+              <Button as="a" leftIcon={<FaInfoCircle />} variant="ghost">
+                About
+              </Button>
+            </Link>
+          </li>
+        </HStack>
       </nav>
       <main>{children}</main>
       <footer>
-        <Stack spacing={4}>
-          <Stack direction="row" spacing={2} justifyContent="center">
+        <VStack spacing={4} mt="8">
+          <HStack spacing={4}>
             <SocialLink
-              aria-label="Github Link"
               href={"https://github.com/" + process.env.ID_GITHUB}
-              icon={<GitHub />}
+              aria-label="Github"
+              isRound
+              size="lg"
+              variant="ghost"
+              icon={<FaGithub size="1.5em" />}
             />
+
             <SocialLink
-              aria-label="Twitter Link"
               href={"https://twitter.com/" + process.env.ID_TWITTER}
-              icon={<Twitter />}
+              aria-label="Twitter"
+              isRound
+              size="lg"
+              variant="ghost"
+              icon={<FaTwitter size="1.5em" />}
             />
+
             <SocialLink
-              aria-label="Instagram Link"
               href={"https://www.instagram.com/" + process.env.ID_INSTAGRAM}
-              icon={<Instagram />}
+              aria-label="Instagram"
+              isRound
+              size="lg"
+              variant="ghost"
+              icon={<FaInstagram size="1.5em" />}
             />
-          </Stack>
-          <Typography
+          </HStack>
+          <Text
+            fontSize="sm"
+            letterSpacing={1.5}
             align="center"
-            sx={{
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              letterSpacing: "1px",
-            }}
+            fontWeight="bold"
           >
-            Copyright &copy; 2021 <Title />
-          </Typography>
-          <Typography
+            Copyright &copy; {format(new Date(), "yyyy")} K.W.
+          </Text>
+          <Text
+            fontSize="sm"
+            letterSpacing={1.5}
             align="center"
-            sx={{
-              fontSize: "0.8rem",
-              fontWeight: 700,
-              letterSpacing: "1px",
-              pb: 4,
-            }}
+            fontWeight="bold"
           >
             All rights reserved.
-          </Typography>
-        </Stack>
+          </Text>
+        </VStack>
       </footer>
-    </Stack>
+    </VStack>
   );
 };
 

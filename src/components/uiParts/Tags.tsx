@@ -1,5 +1,6 @@
-import { Chip, Box } from "@mui/material";
+import { Button, Wrap, WrapItem } from "@chakra-ui/react";
 import React from "react";
+import { FaHashtag } from "react-icons/fa";
 
 type Props = {
   tags?: string[];
@@ -7,29 +8,21 @@ type Props = {
 
 const Tags: React.VFC<Props> = ({ tags }) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        listStyle: "none",
-        m: 0.5,
-        p: 0,
-      }}
-      component="ul"
-    >
+    <Wrap spacing="2" mt="3" align="center">
       {tags &&
         tags.map((tag) => (
-          <Box component="li" key={tag} m={0.25}>
-            <Chip
-              label={tag}
-              size="small"
-              sx={{ px: 0.25, fontWeight: 500, color: "text.secondary" }}
-              variant="outlined"
-              clickable
-            />
-          </Box>
+          <WrapItem key={tag}>
+            <Button
+              variant="link"
+              size="xs"
+              leftIcon={<FaHashtag />}
+              iconSpacing={0.5}
+            >
+              {tag}
+            </Button>
+          </WrapItem>
         ))}
-    </Box>
+    </Wrap>
   );
 };
 
