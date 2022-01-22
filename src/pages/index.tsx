@@ -1,13 +1,11 @@
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React from "react";
 import { HomeLayout } from "src/components/layout";
 
 const HomePage: React.VFC = () => {
   return (
     <HomeLayout>
-      <Head>
-        <title>K.W. info</title>
-      </Head>
+      <NextSeo title="K.W.info" titleTemplate="%s" />
     </HomeLayout>
   );
 };

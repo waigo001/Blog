@@ -1,5 +1,5 @@
 import { NextPage } from "next";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 import React from "react";
 import { CommonLayout } from "src/components/layout";
 import { AboutPageRenderer } from "src/components/uiParts";
@@ -12,9 +12,7 @@ type Props = {
 const AboutPage: NextPage<Props> = ({ aboutPage }) => {
   return (
     <CommonLayout>
-      <Head>
-        <title>About | K.W.info</title>
-      </Head>
+      <NextSeo title="About" />
       <AboutPageRenderer content={aboutPage.content} />
     </CommonLayout>
   );
