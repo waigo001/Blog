@@ -2,13 +2,13 @@ import React from "react";
 import { getAllPosts, getPost } from "src/lib/post";
 import { useRouter } from "next/router";
 import ErrorPage from "next/error";
-import Head from "next/head";
 
 import { NextPage } from "next";
 
 import { CommonLayout } from "src/components/layout";
 import { PostTime, Tags, PostPageRenderer } from "src/components/uiParts";
 import { Divider, Flex, Text } from "@chakra-ui/react";
+import { NextSeo } from "next-seo";
 
 type Props = {
   post: Post;
@@ -33,9 +33,7 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
           px={{ base: "0", sm: "4", md: "6" }}
           py="2"
         >
-          <Head>
-            <title>{post.title} | K.W.info</title>
-          </Head>
+          <NextSeo title={post.title} description={post.description} />
           <PostTime
             createdAt={post.createdAt}
             updatedAt={post.updatedAt}
