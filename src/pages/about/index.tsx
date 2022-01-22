@@ -12,7 +12,7 @@ type Props = {
 const AboutPage: NextPage<Props> = ({ aboutPage }) => {
   return (
     <CommonLayout>
-      <NextSeo title="About" />
+      <NextSeo title="About" description="K.W. infoについて" />
       <AboutPageRenderer content={aboutPage.content} />
     </CommonLayout>
   );
