@@ -1,0 +1,22 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+import React from "react";
+
+type Props = {
+  children?: React.ReactNode;
+  icon: React.ReactNode;
+  to: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
+
+const PageLink: React.VFC<Props> = ({ children, icon, to, onClick }) => {
+  const router = useRouter();
+
+  return (
+    <Link href={to} passHref>
+      {children}
+    </Link>
+  );
+};
+
+export default PageLink;
