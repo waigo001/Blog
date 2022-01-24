@@ -1,0 +1,13 @@
+name: 機能追加
+description: 追加機能について
+labels: ["enhancement"]
+body:
+  - type: "textarea"
+    id: "description"
+    attributes:
+      label: "概要"
+      description: "追加したい機能の概要についてなるべく詳しく記載してください"
+      placeholder: |
+        …のレイアウトを…に変更する。等。
+    validations:
+      required: true
