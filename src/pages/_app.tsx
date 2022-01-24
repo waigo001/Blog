@@ -10,7 +10,9 @@ const App: React.VFC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <DefaultSeo {...nextSeoConfig} />
-      <GoogleTagManager googleTagManagerId={process.env.ID_GTAG} />
+      {process.env.NODE_ENV === "production" && (
+        <GoogleTagManager googleTagManagerId={process.env.ID_GTAG} />
+      )}
       <ChakraProvider theme={theme} portalZIndex={40}>
         <Component {...pageProps} />
       </ChakraProvider>
