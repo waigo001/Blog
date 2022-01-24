@@ -2,7 +2,7 @@
 title: Next.jsでJamstackなブログを作ってみた
 createdAt: "2021-10-17"
 updatedAt: "2021-10-17"
-isDraft: true
+isDraft: false
 tags:
   - Jamstack
   - Next.js

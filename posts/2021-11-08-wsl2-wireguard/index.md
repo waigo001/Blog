@@ -2,7 +2,7 @@
 title: WireguardでVPNした際に、WSL2がインターネットにつながらない件
 createdAt: "2021-11-08"
 updatedAt: "2021-11-08"
-isDraft: false
+isDraft: true
 tags:
   - Wireguard
   - WSL2
