@@ -7,7 +7,7 @@ import { NextPage } from "next";
 
 import { CommonLayout } from "src/components/layout";
 import { PostTime, Tags, PostPageRenderer } from "src/components/uiParts";
-import { Divider, Flex, Text } from "@chakra-ui/react";
+import { Badge, Divider, Flex, Text } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
 
 type Props = {
@@ -34,11 +34,18 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
           py="2"
         >
           <NextSeo title={post.title} description={post.description} />
-          <PostTime
-            createdAt={post.createdAt}
-            updatedAt={post.updatedAt}
-            enableItemProp
-          />
+          <Flex justify="flex-start" align="center">
+            <PostTime
+              createdAt={post.createdAt}
+              updatedAt={post.updatedAt}
+              enableItemProp
+            />
+            {post.isDraft && (
+              <Badge ml="2" colorScheme={"orange"}>
+                Draft
+              </Badge>
+            )}
+          </Flex>
           <Text as="h1" fontSize="xl" fontWeight="bold" my="4">
             {post.title}
           </Text>

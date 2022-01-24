@@ -27,8 +27,9 @@ export const getPost = (slug: string): Post => {
 
 export const getAllPosts = (): Post[] => {
   const slugs = getPostSlugs();
-  const posts = slugs.map((slug) => getPost(slug));
-
+  let posts = slugs.map((slug) => getPost(slug));
+  if (process.env.NODE_ENV === "production")
+    posts = posts.filter((post) => !post.isDraft);
   return posts.sort((post1, post2) =>
     post1.updatedAt > post2.updatedAt ? -1 : 1
   );
