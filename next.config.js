@@ -13,6 +13,7 @@ const nextConfig = {
     ID_TWITTER: process.env.ID_TWITTER,
     ID_INSTAGRAM: process.env.ID_INSTAGRAM,
     ID_GTAG: process.env.ID_GTAG,
+    SITE_URL: process.env.SITE_URL,
   },
   webpack: (config) => {
     config.module.rules.push({

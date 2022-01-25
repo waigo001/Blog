@@ -12,13 +12,13 @@ const nextSeoConfig: NextSeoProps = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "https://k-w.info",
+    url: process.env.SITE_URL,
     title: "K.W.info",
     description: "K.W.のメモ用のブログです",
     site_name: "K.W.info",
     images: [
       {
-        url: "https://k-w.info/og-image.jpg",
+        url: process.env.SITE_URL + "/og-image.jpg",
         width: 2026,
         height: 2026,
         alt: "K.W.のアイコン",
