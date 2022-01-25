@@ -1,6 +1,7 @@
 module.exports = {
   siteUrl: "https://k-w.info",
-  changefreq: "weekly",
+  changefreq: undefined,
   generateRobotsTxt: true,
-  sitemapSize: 7000,
+  priority: undefined,
+  autoLastmod: false,
 };
