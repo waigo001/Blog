@@ -1,5 +1,5 @@
 ---
-title: next-sitemapでsitemapとrobotsを自動生成する
+title: next-sitemapでsitemapとrobots.txtを自動生成する
 createdAt: "2022-01-25"
 updatedAt: "2022-01-25"
 isDraft: false
@@ -10,7 +10,7 @@ tags:
 
 ## 概要
 
-`Next.js`でsitemapを公開する場合、`public`フォルダに`sitemap.xml`を作成し保存すれば公開される。  
+`Next.js`でsitemapを追加する場合、`public`フォルダに`sitemap.xml`を作成すればよい。  
 ただ、ページを作成する毎に編集する必要があるため、これを自動化したい。
 
 幸いにも`next-sitemap`なるツールがあるため、これを利用する。
@@ -22,6 +22,8 @@ tags:
 | next         | 12.0.8   |
 | next-sitemap | 2.0.2    |
 | node.js      | v16.13.1 |
+
+ホスティング先：[Vercel](https://vercel.com/)
 
 ## インストール
 
@@ -42,7 +44,7 @@ $ npm install --save-dev next-sitemap
 
 ```js:next-sitemap.js
 module.exports = {
-  siteUrl: "https://k-w.info",
+  siteUrl: process.env.SITE_URL,
   generateRobotsTxt: true,
   priority: undefined,
   changefreq: undefined,
@@ -58,7 +60,7 @@ module.exports = {
 ```
 
 また、`package.json`に以下追記する。
-これを記載することで、`npm run build`を実施した際に`npm run postbuild`コマンドも自動的に走る。
+これを記載することで、`npm run build`を実施した際に`npm run postbuild`コマンドも自動的に実行される。
 
 ```json:package.json {5}
 {
@@ -72,8 +74,57 @@ module.exports = {
 
 ```
 
-## あとがき
+## sitemapのカスタマイズ
 
-`lastmod`については、はmarkdownから更新日時の読み込みを実施させたいが、未実装。  
-（[この辺](https://github.com/iamvishnusankar/next-sitemap#generating-dynamicserver-side-sitemaps)を上手いことすればいけそう）  
-上手いこといけば記事更新します。
+記事については最終更新日時を設定できるため、これを`lastmod`に記載すればクローラーが記事を更新したと認識できる。
+
+本サイトではSSR(Server Side Rendering)限定であるが、以下でsitemapを動的に生成している。
+
+```tsx:pages/blog-sitemap.xml.tsx
+import { getServerSideSitemap } from "next-sitemap";
+import { GetServerSideProps } from "next";
+import { getAllPosts } from "src/lib/post";
+import { parseISO } from "date-fns";
+
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
+  const posts = getAllPosts();
+
+  const fields = posts.map((post) => {
+    return {
+      loc: process.env.SITE_URL + "/blog/" + post.slug,
+      lastmod: parseISO(post.updatedAt).toISOString(),
+    };
+  });
+  return getServerSideSitemap(ctx, fields);
+};
+
+//Next.jsでエラーを出さないための措置
+const Page = () => null;
+export default Page;
+```
+
+また、
+
+- 動的に生成するページの除外
+- `blog-sitemap.xml.tsx`自身の除外
+- 自動生成される`robots.txt`に`blog-sitemap.xml`をsitemapとして追加
+
+上記3点を実現するため、`next-sitemap.js`を以下の通り書き換える。
+
+```js:next-sitemap.js {7-9}
+module.exports = {
+  siteUrl: process.env.SITE_URL,
+  changefreq: undefined,
+  generateRobotsTxt: true,
+  priority: undefined,
+  autoLastmod: false,
+  exclude: ["/server-sitemap.xml", "/blog/*"],
+  robotsTxtOptions: {
+    additionalSitemaps: [process.env.SITE_URL + "/blog-sitemap.xml"],
+  },
+};
+```
+
+## 備考
+
+サーバサイドではなくSSGで更新日時を追加できれば良いが、現状の`next-sitemap`では無理そう。
