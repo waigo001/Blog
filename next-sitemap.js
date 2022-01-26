@@ -4,7 +4,7 @@ module.exports = {
   generateRobotsTxt: true,
   priority: undefined,
   autoLastmod: false,
-  exclude: ["/server-sitemap.xml", "/blog/*"],
+  exclude: ["/blog-sitemap.xml", "/blog/*"],
   robotsTxtOptions: {
     additionalSitemaps: [process.env.SITE_URL + "/blog-sitemap.xml"],
   },
