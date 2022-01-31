@@ -21,7 +21,7 @@ const Anchor: React.VFC<Props> = ({ children, href, id }) => {
   } else {
     return (
       <NextLink href={href} passHref>
-        <Link color={color} id={id}>
+        <Link color={color} id={id} scrollMarginTop={id ? "5rem" : undefined}>
           {children}
         </Link>
       </NextLink>
