@@ -1,6 +1,8 @@
 import fs from "fs";
 import { join } from "path";
 import matter from "gray-matter";
+import { extractToc } from "src/utils/mdUtils";
+
 
 const postsDir = join(process.cwd(), "posts");
 
@@ -12,7 +14,7 @@ export const getPost = (slug: string): Post => {
   const fullPath = join(postsDir, slug, "index.md");
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const { data, content } = matter(fileContents);
-
+  const toc = extractToc(content);
   return {
     title: data.title,
     slug: slug,
@@ -22,6 +24,7 @@ export const getPost = (slug: string): Post => {
     updatedAt: data.updatedAt,
     createdAt: data.createdAt,
     tags: data.tags || null,
+    toc: toc,
   };
 };
 
