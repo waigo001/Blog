@@ -1,4 +1,4 @@
-import { Container, VStack } from "@chakra-ui/react";
+import { Container, Flex } from "@chakra-ui/react";
 import React from "react";
 import Footer from "./footer";
 import Header from "./header";
@@ -9,13 +9,13 @@ type Props = {
 
 const CommonLayout: React.VFC<Props> = ({ children }) => {
   return (
-    <VStack minH="100vh">
+    <Flex direction="column" minH="100vh">
       <Header />
-      <Container as="main" maxW="5xl" flex="1">
+      <Container as="main" maxW="5xl" flexGrow="1" my="4">
         {children}
       </Container>
       <Footer />
-    </VStack>
+    </Flex>
   );
 };
 
