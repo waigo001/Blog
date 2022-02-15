@@ -5,6 +5,7 @@ import remarkUnwrapImages from "remark-unwrap-images";
 import Image from "next/image";
 import { MdComponents } from "./MdComponents";
 import { isURL } from "src/utils";
+import rehypeSlug from "rehype-slug";
 
 type Props = {
   post: Post;
@@ -26,6 +27,7 @@ const PostPageRenderer: React.VFC<Props> = ({ post }) => {
     <ReactMarkdown
       components={{ img: ImgRenderer, ...MdComponents }}
       remarkPlugins={[remarkUnwrapImages, remarkGfm]}
+      rehypePlugins={[rehypeSlug]}
     >
       {post.content}
     </ReactMarkdown>

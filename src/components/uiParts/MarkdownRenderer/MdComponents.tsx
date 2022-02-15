@@ -39,11 +39,16 @@ const TData = (props: HTMLChakraProps<"td">) => (
   />
 );
 
+const isFootnote = (id?: string) => {
+  if (id === "footnote-label") return true;
+  else return false;
+};
+
 const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
   const color = useColorModeValue("cyan.600", "cyan.400");
 
   return (
-    <chakra.h2 borderColor={color} css={{ scrollMarginTop: "6rem" }} {...props}>
+    <chakra.h2 data-group borderColor={color} scrollMarginTop="5rem" {...props}>
       <span className="content">{props.children}</span>
       {props.id && (
         <chakra.a
@@ -68,7 +73,10 @@ export const MdComponents: Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
 > = {
   h1: ({ node, ...props }) => <chakra.h1 apply="mdx.h1" {...props} />,
-  h2: ({ node, ...props }) => <LinkedHeading apply="mdx.h2" {...props} />,
+  h2: ({ node, id, ...props }) => {
+    if (isFootnote(id)) return <chakra.hr apply="mdx.hr" mt="4" />;
+    else return <LinkedHeading apply="mdx.h2" id={id} {...props} />;
+  },
   h3: ({ node, ...props }) => (
     <LinkedHeading as="h3" apply="mdx.h3" {...props} />
   ),

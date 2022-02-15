@@ -9,4 +9,5 @@ type Post = {
 
   content: string;
   tags?: string[];
+  toc?: Toc[];
 };

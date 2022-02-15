@@ -10,3 +10,4 @@ export { default as BlogCard } from "./BlogCard";
 export { default as PostPageRenderer } from "./MarkdownRenderer/PostPage";
 export { default as AboutPageRenderer } from "./MarkdownRenderer/AboutPage";
 export { default as Logo } from "./Logo";
+export { default as TableOfContent } from "./TableOfContent";
