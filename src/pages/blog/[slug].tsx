@@ -27,6 +27,8 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     return <ErrorPage statusCode={404} />;
   }
 
+  const ogp = new URL("/" + post.title + ".png", process.env.OGP_URL);
+
   return (
     <CommonLayout>
       {router.isFallback ? (
@@ -37,7 +39,14 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
             px={{ base: "0", sm: "4", md: "6" }}
             width={{ base: "full", lg: "calc(100% - 16rem)" }}
           >
-            <NextSeo title={post.title} description={post.description} />
+            <NextSeo
+              title={post.title}
+              description={post.description}
+              twitter={{ cardType: "summary_large_image" }}
+              openGraph={{
+                images: [{ url: ogp.toString() }],
+              }}
+            />
             <Flex justify="flex-start" align="center">
               <PostTime
                 createdAt={post.createdAt}
