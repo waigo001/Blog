@@ -14,6 +14,7 @@ const nextConfig = {
     ID_INSTAGRAM: process.env.ID_INSTAGRAM,
     ID_GTAG: process.env.ID_GTAG,
     SITE_URL: process.env.SITE_URL,
+    OGP_URL: process.env.OGP_URL,
   },
   webpack: (config) => {
     config.module.rules.push({
