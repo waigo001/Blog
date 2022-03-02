@@ -27,7 +27,15 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     return <ErrorPage statusCode={404} />;
   }
 
-  const ogp = new URL("/" + post.title + ".png", process.env.OGP_URL);
+  const ogp = new URL(
+    "/" +
+      encodeURIComponent(post.ogpTitle === null ? post.title : post.ogpTitle) +
+      ".png",
+    process.env.OGP_URL
+  );
+  ogp.searchParams.set("md", "1");
+  if (post.ogpFontSize !== null)
+    ogp.searchParams.set("fontSize", post.ogpFontSize);
 
   return (
     <CommonLayout>

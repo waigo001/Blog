@@ -1,5 +1,6 @@
 ---
 title: next-sitemapでsitemapとrobots.txtを自動生成する
+ogpTitle: next-sitemapでsitemapと<br/>robots.txtを自動生成する
 createdAt: "2022-01-25"
 updatedAt: "2022-01-26"
 isDraft: false

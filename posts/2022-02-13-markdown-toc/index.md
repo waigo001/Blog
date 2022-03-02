@@ -2,6 +2,7 @@
 title: react-markdownのブログに目次(TOC)をつける
 createdAt: "2022-02-13"
 updatedAt: "2022-02-14"
+ogpTitle: react-markdownのブログに<br/>目次(TOC)をつける
 isDraft: false
 description: "react-markdownで作成したブログに、markdownから抽出した目次をつけた際のメモ。"
 tags:

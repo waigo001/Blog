@@ -1,5 +1,6 @@
 ---
 title: Next.jsでのルーティング判定
+ogTitle: Next.jsでのルーティング判定
 createdAt: "2022-01-27"
 updatedAt: "2022-01-27"
 isDraft: false

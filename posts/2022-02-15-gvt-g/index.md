@@ -1,5 +1,6 @@
 ---
 title: Proxmox VEでintel GVT-g(仮想GPU)を設定する
+ogpTitle: Proxmox VEでintel GVT-g<br/>(仮想GPU)を設定する
 createdAt: "2022-02-17"
 updatedAt: "2022-02-17"
 isDraft: false
