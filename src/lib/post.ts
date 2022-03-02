@@ -22,6 +22,7 @@ export const getPost = (slug: string): Post => {
     content: content,
     updatedAt: data.updatedAt,
     createdAt: data.createdAt,
+    ogpTitle: data.ogpTitle || null,
     tags: data.tags || null,
     toc: toc,
   };
