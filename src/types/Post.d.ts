@@ -7,6 +7,9 @@ type Post = {
   createdAt: string;
   description?: string;
 
+  ogpTitle: string | null;
+  ogpFontSize: string | null;
+
   content: string;
   tags?: string[];
   toc?: Toc[];

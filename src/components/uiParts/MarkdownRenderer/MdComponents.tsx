@@ -69,6 +69,18 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
   );
 };
 
+const CustomStrong = (props: HTMLChakraProps<"strong">) => {
+  const bg = useColorModeValue("cyan.200", "cyan.900");
+
+  return (
+    <chakra.strong
+      bgGradient={"linear(transparent 75%, " + bg + " 75%)"}
+      fontWeight="bold"
+      {...props}
+    />
+  );
+};
+
 export const MdComponents: Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
 > = {
@@ -98,9 +110,7 @@ export const MdComponents: Partial<
   ),
   hr: ({ node, ...props }) => <chakra.hr apply="mdx.hr" {...props} />,
   a: Anchor,
-  strong: ({ node, ...props }) => (
-    <Box as="strong" fontWeight="bold" {...props} />
-  ),
+  strong: ({ node, ...props }) => <CustomStrong {...props} />,
   pre: ({ node, ...props }) => {
     if (typeof props.children === "string")
       return <chakra.pre my="2em" borderRadius="sm" {...props} />;
