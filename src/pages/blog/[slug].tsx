@@ -34,6 +34,8 @@ const BlogPostPage: NextPage<Props> = ({ post }) => {
     process.env.OGP_URL
   );
   ogp.searchParams.set("md", "1");
+  if (post.ogpFontSize !== null)
+    ogp.searchParams.set("fontSize", post.ogpFontSize);
 
   return (
     <CommonLayout>

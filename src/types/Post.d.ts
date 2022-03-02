@@ -8,6 +8,7 @@ type Post = {
   description?: string;
 
   ogpTitle: string | null;
+  ogpFontSize: string | null;
 
   content: string;
   tags?: string[];
