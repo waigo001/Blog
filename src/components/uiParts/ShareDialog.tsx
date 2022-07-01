@@ -7,7 +7,7 @@ type Props = {
   onClose: () => void;
 };
 
-const ShareDialog: React.VFC<Props> = ({ title, isOpen, onClose }) => {
+const ShareDialog: React.FC<Props> = ({ title, isOpen, onClose }) => {
   return <></>;
 };
 

@@ -23,7 +23,7 @@ type NavLinkProps = {
   icon?: React.ReactElement;
 };
 
-const NavLink: React.VFC<NavLinkProps> = ({ href, children, icon }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children, icon }) => {
   const { pathname } = useRouter();
   const [, group] = href.split("/");
   const isActive = pathname.includes(group);
@@ -47,7 +47,7 @@ const NavLink: React.VFC<NavLinkProps> = ({ href, children, icon }) => {
   );
 };
 
-const HeaderContent: React.VFC = () => {
+const HeaderContent: React.FC = () => {
   const mobileNav = useDisclosure();
 
   return (
@@ -93,7 +93,7 @@ const HeaderContent: React.VFC = () => {
   );
 };
 
-const Header: React.VFC<HTMLChakraProps<"header">> = ({ ...props }) => {
+const Header: React.FC<HTMLChakraProps<"header">> = ({ ...props }) => {
   const bg = useColorModeValue("white", "gray.800");
   const shadow = useColorModeValue("md", "2xl");
 

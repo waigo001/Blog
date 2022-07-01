@@ -9,7 +9,7 @@ type Props = {
   enableItemProp?: boolean;
 };
 
-const PostTime: React.VFC<Props> = ({
+const PostTime: React.FC<Props> = ({
   createdAt = "19700101T000000Z",
   updatedAt = "19700101T000000Z",
   enableItemProp = false,

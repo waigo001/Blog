@@ -11,8 +11,8 @@ type Props = {
   post: Post;
 };
 
-const PostPageRenderer: React.VFC<Props> = ({ post }) => {
-  const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
+const PostPageRenderer: React.FC<Props> = ({ post }) => {
+  const ImgRenderer: React.FC<{ alt?: string; src?: string }> = (props) => {
     const { alt, src } = props;
 
     if (!src) return <></>;

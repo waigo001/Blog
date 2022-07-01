@@ -9,7 +9,7 @@ type Props = {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
-const PageLink: React.VFC<Props> = ({ children, icon, to, onClick }) => {
+const PageLink: React.FC<Props> = ({ children, icon, to, onClick }) => {
   const router = useRouter();
 
   return (

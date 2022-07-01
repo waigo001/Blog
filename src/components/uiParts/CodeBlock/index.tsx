@@ -34,7 +34,7 @@ const getParams = (className = "") => {
   return [language.replace(/language-/, ""), title];
 };
 
-const CodeBlock: React.VFC<CodeProps> = ({
+const CodeBlock: React.FC<CodeProps> = ({
   children,
   className,
   inline,

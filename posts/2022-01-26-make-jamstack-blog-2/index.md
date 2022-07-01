@@ -17,7 +17,9 @@ Chakra UIを利用したブログについて、備忘録を残す。
 ## 導入
 
 ### Chakra UI
-****
+
+---
+
 ```bash
 $ npm i @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^5
 ```
@@ -40,7 +42,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
 import theme from "src/styles/theme";
 
-const App: React.VFC<AppProps> = ({ Component, pageProps }) => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <ChakraProvider theme={theme} portalZIndex={40}>
       <Component {...pageProps} />
@@ -79,8 +81,6 @@ Chakra UIはダークモードに対応している。また、**useSystemColorM
 参考：[Dark Mode](https://chakra-ui.com/docs/comparison#dark-mode-)
 
 フォントはここで設定するが、webフォント（[Google Fonts](https://fonts.google.com/)）を利用する場合、Next.jsの`font optimization`（最適化）を利用できる。
-
-
 
 ### Webフォント
 
@@ -124,7 +124,4 @@ export default MyDocument;
 
 ### ディレクトリ構造
 
-
-
 ## まとめ
-

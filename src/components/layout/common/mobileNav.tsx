@@ -30,7 +30,7 @@ type NavLinkProps = {
   icon?: React.ReactElement;
 };
 
-const NavLink: React.VFC<NavLinkProps> = ({ href, children, icon }) => {
+const NavLink: React.FC<NavLinkProps> = ({ href, children, icon }) => {
   const { pathname } = useRouter();
   const [, group] = href.split("/");
   const isActive = pathname.includes(group);
@@ -61,7 +61,7 @@ type Props = {
   onClose: () => void;
 };
 
-const MobileNavContent: React.VFC<Props> = ({ isOpen, onClose }) => {
+const MobileNavContent: React.FC<Props> = ({ isOpen, onClose }) => {
   return (
     <Drawer placement="left" isOpen={isOpen} onClose={onClose} size="xs">
       <DrawerOverlay />

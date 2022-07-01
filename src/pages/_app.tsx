@@ -6,7 +6,7 @@ import { DefaultSeo } from "next-seo";
 import nextSeoConfig from "next-seo.config";
 import GoogleTagManager from "src/components/GoogleTagManager";
 
-const App: React.VFC<AppProps> = ({ Component, pageProps }) => {
+const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <>
       <DefaultSeo {...nextSeoConfig} />

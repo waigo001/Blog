@@ -16,7 +16,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const HomeLayout: React.VFC<Props> = ({ children }) => {
+const HomeLayout: React.FC<Props> = ({ children }) => {
   return (
     <VStack
       //@ts-ignore

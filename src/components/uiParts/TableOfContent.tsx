@@ -11,7 +11,7 @@ type Props = {
   toc: Toc[];
 };
 
-const TableOfContent: React.VFC<Props> = (props: Props) => {
+const TableOfContent: React.FC<Props> = (props: Props) => {
   const { toc } = props;
   const linkColor = useColorModeValue("gray.500", "gray.400");
   const linkHoverColor = useColorModeValue("gray.900", "gray.100");

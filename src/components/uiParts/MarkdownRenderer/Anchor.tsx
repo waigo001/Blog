@@ -9,7 +9,7 @@ type Props = {
   id?: string;
 };
 
-const Anchor: React.VFC<Props> = ({ children, href, id }) => {
+const Anchor: React.FC<Props> = ({ children, href, id }) => {
   const color = useColorModeValue("cyan.600", "cyan.400");
   if (!href) return <></>;
   if (isURL(href)) {

@@ -8,7 +8,7 @@ type Props = {
   post: Post;
 };
 
-const BlogCard: React.VFC<Props> = ({ post }) => {
+const BlogCard: React.FC<Props> = ({ post }) => {
   return (
     <Flex
       as="article"
