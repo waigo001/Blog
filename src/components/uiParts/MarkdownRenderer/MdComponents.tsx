@@ -3,7 +3,6 @@ import {
   Box,
   Kbd,
   useColorModeValue,
-  Alert,
   HTMLChakraProps,
 } from "@chakra-ui/react";
 import React from "react";
@@ -81,6 +80,27 @@ const CustomStrong = (props: HTMLChakraProps<"strong">) => {
   );
 };
 
+const BlockQuote = (props: HTMLChakraProps<"blockquote">) => {
+  const bg = useColorModeValue("orange.100", "rgba(251, 211, 141, 0.16)");
+  const borderColor = useColorModeValue("orange.500", "orange.200");
+  return (
+    <chakra.blockquote
+      display="flex"
+      alignItems="center"
+      width="full"
+      py="2"
+      rounded="4px"
+      my="3"
+      borderInlineStartWidth="4px"
+      borderInlineStartColor={borderColor}
+      bg={bg}
+      paddingInlineStart="3"
+      paddingInlineEnd="4"
+      {...props}
+    />
+  );
+};
+
 export const MdComponents: Partial<
   Omit<NormalComponents, keyof SpecialComponents> & SpecialComponents
 > = {
@@ -96,18 +116,7 @@ export const MdComponents: Partial<
     <LinkedHeading as="h4" apply="mdx.h4" {...props} />
   ),
   p: ({ node, ...props }) => <chakra.p apply="mdx.p" {...props} />,
-  blockquote: ({ node, ...props }) => (
-    <Alert
-      mt="4"
-      role="none"
-      status="warning"
-      variant="left-accent"
-      as="blockquote"
-      rounded="4px"
-      my="1.5rem"
-      {...props}
-    />
-  ),
+  blockquote: ({ node, ...props }) => <BlockQuote {...props} />,
   hr: ({ node, ...props }) => <chakra.hr apply="mdx.hr" {...props} />,
   a: Anchor,
   strong: ({ node, ...props }) => <CustomStrong {...props} />,

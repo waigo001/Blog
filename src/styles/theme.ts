@@ -8,7 +8,7 @@ const theme = extendTheme({
     mono: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
   },
   config: {
-    initialColorMode: "light",
+    initialColorMode: "system",
     useSystemColorMode: true,
   },
   styles: {
@@ -106,7 +106,7 @@ const theme = extendTheme({
       fontSize: "0.875em",
       py: "0.5",
       lineHeight: "normal",
-      mx:"0.5"
+      mx: "0.5",
     },
   },
 });
