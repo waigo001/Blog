@@ -41,7 +41,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon }) => {
           as="a"
           aria-current={isActive ? "page" : undefined}
           leftIcon={icon}
-          isFullWidth
+          width="full"
           justifyContent="left"
           variant={"ghost"}
           colorScheme={isActive ? "cyan" : "gray"}
