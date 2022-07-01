@@ -18,7 +18,11 @@ type Props = {
 
 const HomeLayout: React.VFC<Props> = ({ children }) => {
   return (
-    <VStack minH={"100vh"} justify="center">
+    <VStack
+      //@ts-ignore
+      minH={[["100vh", "100dvh"]]}
+      justify="center"
+    >
       <header>
         <Logo height="12" />
       </header>
