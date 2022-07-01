@@ -16,9 +16,13 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const HomeLayout: React.VFC<Props> = ({ children }) => {
+const HomeLayout: React.FC<Props> = ({ children }) => {
   return (
-    <VStack minH={"100vh"} justify="center">
+    <VStack
+      //@ts-ignore
+      minH={[["100vh", "100dvh"]]}
+      justify="center"
+    >
       <header>
         <Logo height="12" />
       </header>

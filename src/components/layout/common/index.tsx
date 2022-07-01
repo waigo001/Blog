@@ -7,7 +7,7 @@ type Props = {
   children?: React.ReactNode;
 };
 
-const CommonLayout: React.VFC<Props> = ({ children }) => {
+const CommonLayout: React.FC<Props> = ({ children }) => {
   return (
     <Flex direction="column" minH="100vh">
       <Header />

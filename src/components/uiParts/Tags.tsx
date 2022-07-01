@@ -6,7 +6,7 @@ type Props = {
   tags?: string[];
 };
 
-const Tags: React.VFC<Props> = ({ tags }) => {
+const Tags: React.FC<Props> = ({ tags }) => {
   return (
     <Wrap spacing="2" mt="3" align="center">
       {tags &&

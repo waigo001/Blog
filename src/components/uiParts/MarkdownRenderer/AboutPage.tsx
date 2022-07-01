@@ -8,7 +8,7 @@ type Props = {
   content: string;
 };
 
-const AboutPageRenderer: React.VFC<Props> = ({ content }) => {
+const AboutPageRenderer: React.FC<Props> = ({ content }) => {
   return (
     <ReactMarkdown
       components={MdComponents}

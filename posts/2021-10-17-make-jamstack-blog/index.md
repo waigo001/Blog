@@ -192,7 +192,7 @@ Next.jsでは、`public`フォルダにファイルを配置することで、�
 ```tsx
 import Image from "next/image";
 
-const ImgRenderer: React.VFC<{ alt?: string; src?: string }> = (props) => {
+const ImgRenderer: React.FC<{ alt?: string; src?: string }> = (props) => {
   const { alt, src } = props;
 
   if (!src) return <></>;
