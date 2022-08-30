@@ -1,6 +1,5 @@
 import { Flex, Icon, Text } from "@chakra-ui/react";
 import { format, isAfter, parseISO } from "date-fns";
-import React from "react";
 import { FaClock, FaRegClock } from "react-icons/fa";
 
 type Props = {

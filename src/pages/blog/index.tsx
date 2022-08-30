@@ -1,10 +1,11 @@
 import { GetStaticProps, NextPage } from "next";
-import React from "react";
-import { BlogCard } from "src/components/uiParts";
-import { CommonLayout } from "src/components/layout";
-import { getAllPosts } from "src/lib/post";
+
 import { SimpleGrid } from "@chakra-ui/react";
 import { NextSeo } from "next-seo";
+
+import { CommonLayout } from "src/components/layout";
+import { BlogCard } from "src/components/uiParts";
+import { getAllPosts } from "src/lib/post";
 
 type Props = {
   allPosts: Post[];

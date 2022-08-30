@@ -1,6 +1,7 @@
-import React from "react";
+import Link from "next/link";
 
 import { Button, HStack, Text, VStack } from "@chakra-ui/react";
+import { format } from "date-fns";
 import {
   FaCalendarDay,
   FaGithub,
@@ -8,9 +9,8 @@ import {
   FaInstagram,
   FaTwitter,
 } from "react-icons/fa";
+
 import { SocialLink, Logo } from "src/components/uiParts";
-import { format } from "date-fns";
-import Link from "next/link";
 
 type Props = {
   children?: React.ReactNode;

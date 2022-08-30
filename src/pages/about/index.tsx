@@ -1,6 +1,7 @@
 import { NextPage } from "next";
+
 import { NextSeo } from "next-seo";
-import React from "react";
+
 import { CommonLayout } from "src/components/layout";
 import { AboutPageRenderer } from "src/components/uiParts";
 import { getAboutPage } from "src/lib/about";

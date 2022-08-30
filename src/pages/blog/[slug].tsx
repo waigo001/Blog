@@ -1,9 +1,9 @@
-import React from "react";
-import { getAllPosts, getPost } from "src/lib/post";
-import { useRouter } from "next/router";
-import ErrorPage from "next/error";
-
 import { NextPage } from "next";
+import ErrorPage from "next/error";
+import { useRouter } from "next/router";
+
+import { Badge, Box, chakra, Divider, Flex, Text } from "@chakra-ui/react";
+import { NextSeo } from "next-seo";
 
 import { CommonLayout } from "src/components/layout";
 import {
@@ -12,8 +12,7 @@ import {
   PostPageRenderer,
   TableOfContent,
 } from "src/components/uiParts";
-import { Badge, Box, chakra, Divider, Flex, Text } from "@chakra-ui/react";
-import { NextSeo } from "next-seo";
+import { getAllPosts, getPost } from "src/lib/post";
 
 type Props = {
   post: Post;

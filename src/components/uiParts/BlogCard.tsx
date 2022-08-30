@@ -1,6 +1,7 @@
-import { Flex, useColorModeValue, Text, Badge } from "@chakra-ui/react";
 import Link from "next/link";
-import React from "react";
+
+import { Flex, useColorModeValue, Text, Badge } from "@chakra-ui/react";
+
 import PostTime from "./PostTime";
 import Tags from "./Tags";
 

@@ -1,10 +1,12 @@
-import React from "react";
-import { ChakraProvider } from "@chakra-ui/react";
 import type { AppProps } from "next/app";
-import theme from "src/styles/theme";
+
+import { ChakraProvider } from "@chakra-ui/react";
 import { DefaultSeo } from "next-seo";
-import nextSeoConfig from "next-seo.config";
+
 import GoogleTagManager from "src/components/GoogleTagManager";
+import theme from "src/styles/theme";
+
+import nextSeoConfig from "next-seo.config";
 
 const App: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (

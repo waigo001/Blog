@@ -1,7 +1,8 @@
-import * as React from "react";
-import { Link, useColorModeValue } from "@chakra-ui/react";
-import { isURL } from "src/utils";
 import NextLink from "next/link";
+
+import { Link, useColorModeValue } from "@chakra-ui/react";
+
+import { isURL } from "src/utils";
 
 type Props = {
   children: React.ReactNode & React.ReactNode[];
