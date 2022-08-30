@@ -1,6 +1,8 @@
 import fs from "fs";
 import { join } from "path";
+
 import matter from "gray-matter";
+
 import { extractToc } from "src/utils";
 
 const postsDir = join(process.cwd(), "posts");

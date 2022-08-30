@@ -1,11 +1,12 @@
-import Highlight, { defaultProps, Language } from "prism-react-renderer";
 import React, { useState } from "react";
 
-import DarkTheme from "prism-react-renderer/themes/nightOwl";
-import LightTheme from "prism-react-renderer/themes/github";
-
 import { Box, chakra, useColorModeValue } from "@chakra-ui/react";
-import { CodeProps } from "react-markdown/lib/ast-to-react";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import LightTheme from "prism-react-renderer/themes/github";
+import DarkTheme from "prism-react-renderer/themes/nightOwl";
+
+import type { Language } from "prism-react-renderer";
+import type { CodeProps } from "react-markdown/lib/ast-to-react";
 
 const RE = /{([\d,-]+)}/;
 

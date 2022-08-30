@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { useRouter } from "next/router";
+
 import {
   Button,
   Drawer,
@@ -12,9 +15,6 @@ import {
   UnorderedList,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import React from "react";
 import {
   FaGithub,
   FaTwitter,
@@ -22,6 +22,7 @@ import {
   FaCalendarDay,
   FaInfoCircle,
 } from "react-icons/fa";
+
 import { Logo, SocialLink } from "src/components/uiParts";
 
 type NavLinkProps = {

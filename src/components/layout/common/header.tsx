@@ -1,4 +1,5 @@
-import React from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
 
 import {
   Button,
@@ -10,12 +11,13 @@ import {
   useColorModeValue,
   useDisclosure,
 } from "@chakra-ui/react";
-import { HTMLChakraProps } from "@chakra-ui/system";
 import { FaBars, FaCalendarDay, FaInfoCircle } from "react-icons/fa";
-import Link from "next/link";
+
 import { Logo } from "src/components/uiParts";
+
 import MobileNavContent from "./mobileNav";
-import { useRouter } from "next/router";
+
+import type { HTMLChakraProps } from "@chakra-ui/system";
 
 type NavLinkProps = {
   href: string;

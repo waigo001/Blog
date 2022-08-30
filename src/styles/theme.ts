@@ -4,7 +4,7 @@ const theme = extendTheme({
   fonts: {
     heading:
       'Roboto,"Noto Sans JP",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
-    body: 'Roboto,"Noto Sans JP",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
+    body: 'Roboto,"Zen Kaku Gothic New","Noto Sans JP",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
     mono: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
   },
   config: {
@@ -61,7 +61,7 @@ const theme = extendTheme({
       textDecoration: "underline",
       color: "cyan.500",
       fontWeight: "semibold",
-      transition: "color 0.15s",
+      transition: "color 2s",
       transitionTimingFunction: "ease-out",
       _hover: {
         color: "cyan.600",

@@ -1,5 +1,6 @@
 import fs from "fs";
 import { join } from "path";
+
 import matter from "gray-matter";
 
 const filePath = join(process.cwd(), "src/pages/about", "index.md");

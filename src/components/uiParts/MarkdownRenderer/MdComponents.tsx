@@ -1,15 +1,12 @@
-import {
-  chakra,
-  Box,
-  Kbd,
-  useColorModeValue,
-  HTMLChakraProps,
-} from "@chakra-ui/react";
-import React from "react";
-import { SpecialComponents } from "react-markdown/lib/ast-to-react";
+import { chakra, Kbd, useColorModeValue } from "@chakra-ui/react";
 import { NormalComponents } from "react-markdown/lib/complex-types";
+
 import CodeBlock from "../CodeBlock";
+
 import Anchor from "./Anchor";
+
+import type { HTMLChakraProps } from "@chakra-ui/react";
+import type { SpecialComponents } from "react-markdown/lib/ast-to-react";
 
 const Table = (props: HTMLChakraProps<"table">) => (
   <chakra.div overflowX="auto">

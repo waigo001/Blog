@@ -1,5 +1,4 @@
 import { Button, Wrap, WrapItem } from "@chakra-ui/react";
-import React from "react";
 import { FaHashtag } from "react-icons/fa";
 
 type Props = {

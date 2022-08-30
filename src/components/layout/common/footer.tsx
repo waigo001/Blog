@@ -1,8 +1,10 @@
-import React from "react";
-import { chakra, Flex, HTMLChakraProps, Text, Box } from "@chakra-ui/react";
+import { chakra, Flex, Text, Box } from "@chakra-ui/react";
 import { format } from "date-fns";
-import { SocialLink } from "src/components/uiParts";
 import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
+
+import { SocialLink } from "src/components/uiParts";
+
+import type { HTMLChakraProps } from "@chakra-ui/react";
 
 const FooterContent = () => {
   return (

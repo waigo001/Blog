@@ -1,5 +1,3 @@
-export * from "./PostTime";
-
 export { default as Tags } from "./Tags";
 export { default as SocialLink } from "./SocialLink";
 export { default as ShareDialog } from "./ShareDialog";

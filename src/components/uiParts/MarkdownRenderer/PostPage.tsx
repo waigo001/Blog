@@ -1,11 +1,13 @@
-import React from "react";
+import Image from "next/image";
+
 import ReactMarkdown from "react-markdown";
+import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import remarkUnwrapImages from "remark-unwrap-images";
-import Image from "next/image";
-import { MdComponents } from "./MdComponents";
+
 import { isURL } from "src/utils";
-import rehypeSlug from "rehype-slug";
+
+import { MdComponents } from "./MdComponents";
 
 type Props = {
   post: Post;
