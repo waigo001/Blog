@@ -3,8 +3,8 @@ import { extendTheme } from "@chakra-ui/react";
 const theme = extendTheme({
   fonts: {
     heading:
-      'Roboto,"Noto Sans JP",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
-    body: 'Roboto,"Zen Kaku Gothic New","Noto Sans JP",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
+      'Inter,"Zen Kaku Gothic New",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
+    body: 'Inter,"Zen Kaku Gothic New",-apple-system,"BlinkMacSystemFont","Hiragino Kaku Gothic ProN","Hiragino Sans","Segoe UI","Yu Gothic UI",Meiryo,sans-serif,"Segoe UI Emoji"',
     mono: 'SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace',
   },
   config: {

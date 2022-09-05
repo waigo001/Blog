@@ -66,11 +66,11 @@ const LinkedHeading = (props: HTMLChakraProps<"h2">) => {
 };
 
 const CustomStrong = (props: HTMLChakraProps<"strong">) => {
-  const bg = useColorModeValue("cyan.200", "cyan.900");
+  const bg = useColorModeValue("cyan.200", "cyan.700");
 
   return (
     <chakra.strong
-      bgGradient={"linear(transparent 75%, " + bg + " 75%)"}
+      bgGradient={"linear(transparent 85%, " + bg + " 85%)"}
       fontWeight="bold"
       {...props}
     />

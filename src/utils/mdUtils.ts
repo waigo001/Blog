@@ -1,7 +1,7 @@
+import slugger from "github-slugger";
+import { toString, type Node } from "hast-util-to-string";
 import { remark } from "remark";
 import { visit } from "unist-util-visit";
-import { toString, Node } from "hast-util-to-string";
-import slugger from "github-slugger";
 
 export const extractToc = (mdBody: string) => {
   const result: Toc[] = [];
