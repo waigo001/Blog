@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Button, HStack, Text, VStack } from "@chakra-ui/react";
+import { Box, Button, HStack, Text, VStack } from "@chakra-ui/react";
 import { format } from "date-fns";
 import {
   FaCalendarDay,
@@ -46,7 +46,7 @@ const HomeLayout: React.FC<Props> = ({ children }) => {
       </nav>
       <main>{children}</main>
       <footer>
-        <VStack spacing={4} mt="8">
+        <Box mt="8">
           <HStack spacing={4}>
             <SocialLink
               href={"https://github.com/" + process.env.ID_GITHUB}
@@ -77,21 +77,23 @@ const HomeLayout: React.FC<Props> = ({ children }) => {
           </HStack>
           <Text
             fontSize="sm"
-            letterSpacing={1.5}
+            letterSpacing={1}
             align="center"
             fontWeight="bold"
+            mt="8"
           >
             Copyright &copy; {format(new Date(), "yyyy")} K.W.
           </Text>
           <Text
             fontSize="sm"
-            letterSpacing={1.5}
+            letterSpacing={1}
             align="center"
             fontWeight="bold"
+            mt="4"
           >
             All rights reserved.
           </Text>
-        </VStack>
+        </Box>
       </footer>
     </VStack>
   );
