@@ -31,7 +31,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon }) => {
   const isActive = pathname.includes(group);
   return (
     <li>
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <Button
           as="a"
           aria-current={isActive ? "page" : undefined}
@@ -71,7 +71,7 @@ const HeaderContent: React.FC = () => {
           mr="3"
         />
         <Flex align="center">
-          <Link href="/" passHref>
+          <Link href="/" passHref legacyBehavior>
             <chakra.a aria-label="ホームに戻る">
               <Logo height="6" />
             </chakra.a>

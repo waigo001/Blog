@@ -37,7 +37,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, icon }) => {
   const isActive = pathname.includes(group);
   return (
     <ListItem>
-      <Link href={href} passHref>
+      <Link href={href} passHref legacyBehavior>
         <Button
           as="a"
           aria-current={isActive ? "page" : undefined}
