@@ -29,7 +29,7 @@ const BlogCard: React.FC<Props> = ({ post }) => {
         )}
       </Flex>
 
-      <Link href={`/blog/${post.slug}`} passHref>
+      <Link href={`/blog/${post.slug}`} passHref legacyBehavior>
         <Text as="a" fontSize="xl" fontWeight="bold" my="2">
           <h2>{post.title}</h2>
         </Text>

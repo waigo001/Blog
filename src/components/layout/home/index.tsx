@@ -29,14 +29,14 @@ const HomeLayout: React.FC<Props> = ({ children }) => {
       <nav>
         <HStack mt="12" spacing={4} as="ul" listStyleType="none">
           <li>
-            <Link href="/blog" passHref>
+            <Link href="/blog" passHref legacyBehavior>
               <Button as="a" leftIcon={<FaCalendarDay />} variant="ghost">
                 Blog
               </Button>
             </Link>
           </li>
           <li>
-            <Link href="/about" passHref>
+            <Link href="/about" passHref legacyBehavior>
               <Button as="a" leftIcon={<FaInfoCircle />} variant="ghost">
                 About
               </Button>

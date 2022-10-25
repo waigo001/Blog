@@ -1,6 +1,7 @@
 import NextLink from "next/link";
 
-import { Link, useColorModeValue } from "@chakra-ui/react";
+import { Icon, Link, useColorModeValue } from "@chakra-ui/react";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 import { isURL } from "src/utils";
 
@@ -17,11 +18,12 @@ const Anchor: React.FC<Props> = ({ children, href, id }) => {
     return (
       <Link href={href} color={color} isExternal id={id}>
         {children}
+        <Icon as={FaExternalLinkAlt} ml="1" />
       </Link>
     );
   } else {
     return (
-      <NextLink href={href} passHref>
+      <NextLink href={href} passHref legacyBehavior>
         <Link color={color} id={id} scrollMarginTop={id ? "5rem" : undefined}>
           {children}
         </Link>

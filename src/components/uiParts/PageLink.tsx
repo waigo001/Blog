@@ -12,7 +12,7 @@ const PageLink: React.FC<Props> = ({ children, icon, to, onClick }) => {
   const router = useRouter();
 
   return (
-    <Link href={to} passHref>
+    <Link href={to} passHref legacyBehavior>
       {children}
     </Link>
   );
