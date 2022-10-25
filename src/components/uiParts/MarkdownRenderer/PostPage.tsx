@@ -15,7 +15,7 @@ type Props = {
 
 const PostPageRenderer: React.FC<Props> = ({ post }) => {
   const ImgRenderer: React.FC<{ alt?: string; src?: string }> = (props) => {
-    const { alt, src } = props;
+    const { alt = "", src } = props;
 
     if (!src) return <></>;
     // eslint-disable-next-line @next/next/no-img-element
