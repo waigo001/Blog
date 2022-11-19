@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { chakra } from "@chakra-ui/react";
 import ReactMarkdown from "react-markdown";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
@@ -18,11 +19,10 @@ const PostPageRenderer: React.FC<Props> = ({ post }) => {
     const { alt = "", src } = props;
 
     if (!src) return <></>;
-    // eslint-disable-next-line @next/next/no-img-element
-    if (isURL(src)) return <img src={src} alt={alt} />;
+    if (isURL(src)) return <chakra.img my="4" src={src} alt={alt} />;
 
     const imgSrc = require(`posts/${post.slug}/${src}`);
-    return <Image src={imgSrc} alt={alt} />;
+    return <chakra.img as={Image} my="4" src={imgSrc} alt={alt} />;
   };
 
   return (
