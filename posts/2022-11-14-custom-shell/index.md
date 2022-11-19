@@ -3,7 +3,7 @@ title: macOSのターミナルをイケてる感じにする
 createdAt: "2022-11-14"
 updatedAt: "2022-11-14"
 ogpTitle: macOSのターミナルを<br/>イケてる感じにする
-isDraft: true
+isDraft: false
 ---
 
 ## 経緯
