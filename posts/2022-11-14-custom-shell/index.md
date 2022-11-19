@@ -4,6 +4,11 @@ createdAt: "2022-11-14"
 updatedAt: "2022-11-14"
 ogpTitle: macOSのターミナルを<br/>イケてる感じにする
 isDraft: false
+tags: 
+ - zsh
+ - Shell
+ - starship
+ - Prezto
 ---
 
 ## 経緯
